@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Tanda"
+description = "A bilingual Spanish and English student-discovery platform that helps students find verified local deals, campus resources, and ways to connect."
+version = "1.0.0"
+id = "artifacts/tanda"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20467
+
+[services.development]
+run = "pnpm --filter @workspace/tanda run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tanda", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tanda/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20467"
+BASE_PATH = "/"
