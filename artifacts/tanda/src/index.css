@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -40,7 +40,7 @@
 
 :root {
   --background: 15 100% 99.2%;
-  --foreground: 285 5% 15%;
+  --foreground: 290 5% 15%;
   --border: 240 2% 89%;
   --input: 240 2% 89%;
   --ring: 8 89% 59%;
@@ -62,9 +62,9 @@
   --destructive-foreground: 0 0% 98%;
   --sidebar: 15 100% 99%;
   --sidebar-foreground: 285 5% 15%;
-  --app-font-sans: 'Work Sans', sans-serif;
-  --app-font-serif: 'Work Sans', sans-serif;
-  --app-font-mono: 'Work Sans', sans-serif;
+  --app-font-sans: 'Nunito', sans-serif;
+  --app-font-serif: 'Nunito', sans-serif;
+  --app-font-mono: 'Nunito', sans-serif;
   --radius: 0.75rem;
   --button-outline: rgba(40, 37, 41, 0.12);
   --badge-outline: rgba(40, 37, 41, 0.08);
@@ -567,3 +567,88 @@
   from { offset-distance: 8%; }
   to { offset-distance: 92%; }
 }
+
+/* ---- reference-matched opening ---- */
+.landing-shell .landing-wrap { width: min(1000px, calc(100% - 48px)); }
+.landing-header { height: 56px; border-bottom: 0; background: hsl(var(--background) / .94); }
+.landing-brand { position: relative; font: 900 30px/1 'Nunito', sans-serif; letter-spacing: -.03em; color: #282529; gap: 0; }
+.brand-rays, .title-rays { width: 22px; height: 22px; fill: none; stroke: #F4513B; stroke-width: 2.4; stroke-linecap: round; }
+.brand-rays { position: absolute; right: -18px; top: -10px; }
+.landing-nav a { font-size: 14px; font-weight: 700; color: #282529; }
+.landing-nav a::after { bottom: -5px; height: 2px; }
+.landing-language { font: 800 11px 'Nunito', sans-serif; border: 1.5px solid hsl(var(--border)); border-radius: 99px; min-height: 32px; min-width: 40px; }
+.pill { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 38px; padding: 0 20px; border-radius: 999px; font: 800 15px 'Nunito', sans-serif; text-decoration: none; border: 1.5px solid transparent; transition: transform .2s ease, box-shadow .2s ease; }
+.pill:hover { transform: translateY(-2px); }
+.pill-coral { background: #F4513B; color: #FFFCFB; box-shadow: 0 6px 14px -8px rgba(244,81,59,.8); }
+.pill-outline { background: #FFFCFB; color: #282529; border-color: #282529; }
+.header-cta { min-height: 34px; font-size: 14px; }
+.header-cta:hover { color: #FFFCFB; background: #F4513B; }
+.hero { padding-top: 6px; }
+.hero-copy { text-align: center; }
+.hero-copy h1 { position: relative; display: inline-block; margin: 0; font: 900 clamp(1.9rem, 4.1vw, 2.75rem)/1.12 'Nunito', sans-serif; letter-spacing: -.02em; color: #282529; }
+.title-rays { position: absolute; right: -24px; top: -10px; }
+.ink-underline { position: relative; white-space: nowrap; }
+.ink-underline::after { content: ''; position: absolute; left: 0; right: 4%; bottom: -3px; height: 6px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'%3E%3Cpath d='M2 6Q40 1 98 4' stroke='%23F4513B' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%; }
+.hero-sub { margin: 4px 0 14px; font-size: clamp(15px, 1.9vw, 19px); font-weight: 600; color: #4a4549; }
+.hero-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.panorama { position: relative; margin: 0; padding: 0; overflow: hidden; border-radius: 0; background: #FFFCFB; }
+.reference-panorama { display: block; width: 100%; height: auto; }
+.panorama svg { display: block; width: 100%; height: clamp(190px, 26vw, 290px); }
+.cloud path { fill: #FFFCFB; stroke: #282529; stroke-width: .12; }
+.cloud { animation: cloud-drift 18s ease-in-out infinite alternate; }
+.cloud-b { animation-duration: 23s; animation-direction: alternate-reverse; }
+.cable { fill: none; stroke: #282529; stroke-width: .12; }
+.gondola { offset-path: path("M34 30.6Q48 31.8 66 29.4"); offset-rotate: 0deg; animation: cable-travel 16s ease-in-out infinite alternate; }
+.hanger { stroke: #282529; stroke-width: .12; }
+.car { fill: #F4513B; stroke: #282529; stroke-width: .14; }
+.win { fill: #FFFCFB; stroke: #282529; stroke-width: .08; }
+.benefits { padding: 18px 0 40px; }
+.benefits h2 { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 0 16px; text-align: center; font: 900 clamp(1.3rem, 2.6vw, 1.75rem)/1.2 'Nunito', sans-serif; color: #282529; }
+.rays-l, .rays-r { width: 18px; height: 14px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 14'%3E%3Cpath d='M2 3l6 3M2 11l7-2' stroke='%23F4513B' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat; flex: none; }
+.rays-r { transform: scaleX(-1); }
+.benefit-cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.benefit-card { display: flex; align-items: center; gap: 16px; min-height: 96px; padding: 14px 20px; border-radius: 18px; border: 0; transition: transform .2s ease; }
+.benefit-card:hover { transform: translateY(-3px); }
+.tone-0 { background: #EEEAF8; } .tone-1 { background: #FCEBDC; } .tone-2 { background: #FBE3DE; }
+.benefit-icon svg { width: 62px; height: 62px; flex: none; }
+.benefit-card .benefit-icon { width: 62px; height: 62px; flex: 0 0 62px; border: 0; border-radius: 0; background: transparent; }
+.benefit-icon path, .benefit-icon circle, .benefit-icon rect { stroke: #282529; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.benefit-card > div { border-left: 1.5px solid hsl(290 5% 15% / .25); padding-left: 14px; }
+.benefit-card h3 { margin: 0 0 3px; font: 900 21px/1.15 'Nunito', sans-serif; color: #282529; }
+.benefit-card p { margin: 0; font-size: 13.5px; line-height: 1.4; font-weight: 600; color: #4a4549; }
+@media (min-width: 861px) {
+  .landing-header { height: 52px; }
+  .header-inner { max-width: 840px; }
+  .landing-brand { font-size: 36px; }
+  .hero-copy h1 { font-size: clamp(1.9rem, 3.9vw, 2.5rem); }
+  .hero-sub { margin: 2px 0 10px; }
+  .pill { min-height: 36px; }
+  .benefits { max-width: 910px; }
+  .benefits h2 { margin-bottom: 12px; }
+  .benefit-card { padding: 12px 16px; }
+  .benefit-card h3 { font-size: 20px; }
+  .benefit-card p { font-size: 12.5px; line-height: 1.25; }
+}
+.soon-backdrop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 20px; background: rgba(40,37,41,.45); animation: text-arrive .2s ease both; }
+.soon-dialog { position: relative; max-width: 430px; padding: 30px 28px 26px; border-radius: 24px; background: #FFFCFB; border: 2px solid #282529; box-shadow: 8px 8px 0 #F4513B; text-align: left; }
+.soon-dialog h2 { margin: 10px 0 8px; font: 900 26px/1.15 'Nunito', sans-serif; }
+.soon-dialog p { margin: 0 0 20px; font-size: 15px; line-height: 1.55; color: #4a4549; }
+.soon-tag { display: inline-block; padding: 4px 11px; border-radius: 99px; background: #FBE3DE; color: #c93a26; font: 800 12px 'Nunito', sans-serif; }
+.soon-close { position: absolute; top: 14px; right: 14px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid hsl(var(--border)); background: transparent; color: #282529; }
+.landing-shell button:focus-visible { outline: 2px solid #F4513B; outline-offset: 3px; }
+@keyframes cloud-drift { from { transform: translateX(-1.5px); } to { transform: translateX(2px); } }
+@media (max-width: 860px) {
+  .benefit-cards { grid-template-columns: 1fr; }
+  .landing-nav a { font-size: 12px; }
+}
+@media (max-width: 680px) {
+  .landing-header { height: 60px; }
+  .landing-mobile-nav { top: 60px; }
+  .landing-mobile-nav .pill { margin-top: 12px; }
+  .header-cta { display: none; }
+  .title-rays { display: none; }
+  .panorama svg { height: 220px; }
+  .reference-panorama { width: 150%; max-width: none; margin-left: -25%; }
+  .landing-menu-button { border-radius: 50%; }
+}
+@media (prefers-reduced-motion: reduce) { .gondola, .cloud { animation: none !important; offset-distance: 40%; } }

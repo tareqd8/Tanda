@@ -1,1 +1,2 @@
 - [Tanda web scope](tanda-web-scope.md) — The bilingual website is a marketing landing page; discovery and deal redemption belong in the separate mobile app.
+- [Reference fidelity](reference-fidelity.md) — Match the user's supplied Tanda screenshot closely; avoid editorial reinterpretations or replacement artwork.

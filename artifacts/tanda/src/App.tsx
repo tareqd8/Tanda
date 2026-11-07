@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ArrowRight, Compass, MapPin, Menu, Store, Tag, X } from 'lucide-react';
+import { ArrowRight, Download, Menu, Play, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -105,93 +105,70 @@ function Landing() {
     footerNote: 'Tanda será una app móvil. Este sitio no tiene ofertas activas.',
   };
 
-  const nav = <>{content.links.map((label, index) => (
-    <a key={label} href={['#como-funciona', '#beneficios', '#comercios'][index]} onClick={() => setMenuOpen(false)}>{label}</a>
+  const [soonOpen, setSoonOpen] = useState(false);
+  useEffect(() => {
+    if (!soonOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSoonOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [soonOpen]);
+  const t = en ? {
+    links: ['How it works', 'Benefits', 'For businesses'], download: 'Get the app', downloadMain: 'Download Tanda', see: 'See how it works',
+    title: <>Student life comes with <span className="ink-underline">perks</span>.</>, sub: 'Student discounts at your favorite places across Colombia, coming soon.',
+    benefitsTitle: 'Everything you need to save more.',
+    cards: [['Discover', 'Find student discounts at restaurants, shops and services near you.'], ['Save', 'Enjoy perks made just for being a student.'], ['Share', 'Invite your friends, plan together and save together.']],
+    soonTitle: 'Tanda is on its way', soonBody: 'Our mobile app is still in development, so it is not in the app stores yet. We are building it with students and local businesses in Colombia. Thanks for your patience.', close: 'Close',
+  } : {
+    links: ['Cómo funciona', 'Beneficios', 'Para comercios'], download: 'Descarga la app', downloadMain: 'Descargar Tanda', see: 'Ver cómo funciona',
+    title: <>Ser estudiante tiene sus <span className="ink-underline">beneficios</span>.</>, sub: 'Descuentos exclusivos en tus lugares favoritos de Colombia, muy pronto.',
+    benefitsTitle: 'Todo lo que necesitas para ahorrar más.',
+    cards: [['Descubre', 'Encuentra descuentos en restaurantes, tiendas, servicios y más.'], ['Ahorra', 'Disfruta beneficios pensados por ser estudiante.'], ['Comparte', 'Invita a tus amigos, planeen juntos y multipliquen el ahorro.']],
+    soonTitle: 'Tanda viene en camino', soonBody: 'Nuestra app móvil todavía está en desarrollo, así que aún no está en las tiendas de apps. La estamos construyendo con estudiantes y comercios locales de Colombia. Gracias por la paciencia.', close: 'Cerrar',
+  };
+  const nav = <>{t.links.map((label, index) => (
+    <a key={label} href={['#como-funciona', '#beneficios', '#comercios'][index]} onClick={() => setMenuOpen(false)} data-testid={`link-nav-${index}`}>{label}</a>
   ))}</>;
+  const icons = [
+    <svg viewBox="0 0 64 64" key="d"><path d="M10 26h40v28H10z" fill="#FFE3D6"/><path d="M8 26l5-12h34l5 12z" fill="#F4513B"/><path d="M8 26q5 6 11 0q5 6 11 0q5 6 11 0q5 6 11 0" fill="#FFFCFB"/><path d="M17 54V38h12v16" fill="#FDD6A8"/><path d="M48 32c-6 0-10 4-10 9 0 7 10 15 10 15s10-8 10-15c0-5-4-9-10-9z" fill="#F4513B"/><circle cx="48" cy="41" r="3.5" fill="#FFFCFB"/></svg>,
+    <svg viewBox="0 0 64 64" key="a"><path d="M30 8h20l6 6v20L30 60 6 36z" fill="#F4513B" transform="rotate(8 32 32)"/><circle cx="45" cy="18" r="4" fill="#FFFCFB"/><path d="M24 42l14-14" /><circle cx="25" cy="31" r="3" fill="none"/><circle cx="37" cy="41" r="3" fill="none"/></svg>,
+    <svg viewBox="0 0 64 64" key="c"><circle cx="16" cy="26" r="7" fill="#C9C3EA"/><path d="M4 52c0-10 6-15 12-15s12 5 12 15z" fill="#C9C3EA"/><circle cx="48" cy="26" r="7" fill="#FDD6A8"/><path d="M36 52c0-10 6-15 12-15s12 5 12 15z" fill="#FDD6A8"/><circle cx="32" cy="22" r="8" fill="#F4513B"/><path d="M18 56c0-12 7-18 14-18s14 6 14 18z" fill="#F4513B"/></svg>,
+  ];
 
   return <div className="landing-shell">
     <header className="landing-header">
       <div className="landing-wrap header-inner">
-        <a className="landing-brand" href="#inicio" aria-label="Tanda, inicio"><span className="brand-mark">t</span><span>tanda</span></a>
+        <a className="landing-brand" href="#inicio" aria-label="Tanda" data-testid="link-home">tanda<svg className="brand-rays" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14l5-2M8 7l3 3M15 3l-1 5"/></svg></a>
         <nav className="landing-nav" aria-label={en ? 'Main navigation' : 'Navegación principal'}>{nav}</nav>
         <div className="header-actions">
-          <button className="landing-language" aria-label={en ? 'Cambiar idioma a español' : 'Switch language to English'} onClick={() => setLanguage(en ? 'es' : 'en')} data-testid="button-language">{en ? 'ES' : 'EN'}<span aria-hidden="true">↗</span></button>
-          <a href="#como-funciona" className="header-cta">{content.explore}<ArrowRight size={15} /></a>
-          <button className="landing-menu-button" aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen} onClick={() => setMenuOpen(open => !open)}>{menuOpen ? <X size={20} /> : <Menu size={20} />}</button>
+          <button className="landing-language" aria-label={en ? 'Cambiar idioma a español' : 'Switch language to English'} onClick={() => setLanguage(en ? 'es' : 'en')} data-testid="button-language">{en ? 'ES' : 'EN'}</button>
+          <button className="pill pill-coral header-cta" onClick={() => setSoonOpen(true)} data-testid="button-download-header">{t.download}</button>
+          <button className="landing-menu-button" aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen} onClick={() => setMenuOpen(open => !open)} data-testid="button-menu">{menuOpen ? <X size={20} /> : <Menu size={20} />}</button>
         </div>
       </div>
-      {menuOpen && <nav className="landing-mobile-nav" aria-label={en ? 'Mobile navigation' : 'Navegación móvil'}>{nav}<a href="#como-funciona" onClick={() => setMenuOpen(false)}>{content.explore}<ArrowRight size={15} /></a></nav>}
+      {menuOpen && <nav className="landing-mobile-nav" aria-label={en ? 'Mobile navigation' : 'Navegación móvil'}>{nav}<button className="pill pill-coral" onClick={() => { setMenuOpen(false); setSoonOpen(true); }}>{t.download}</button></nav>}
     </header>
 
     <main id="inicio">
-      <section className="landing-hero">
-        <div className="landing-wrap hero-layout">
-          <div className="hero-copy">
-            <p className="landing-kicker"><span />{content.heroKicker}</p>
-            <h1>{content.heroTitle}</h1>
-          </div>
-          <div className="hero-details">
-            <p className="hero-lede">{content.heroBody}</p>
-            <div className="hero-ctas">
-              <a className="coral-button" href="#como-funciona">{content.explore}<ArrowRight size={17} /></a>
-              <a href="#comercios" className="text-link">{content.partnerCta}<ArrowRight size={15} /></a>
-            </div>
-            <p className="hero-footnote"><MapPin size={14} />{content.locale}</p>
+      <section className="hero">
+        <div className="landing-wrap hero-copy">
+          <h1>{t.title}<svg className="title-rays" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18l6-3M8 10l5 3M15 4l-1 6"/></svg></h1>
+          <p className="hero-sub">{t.sub}</p>
+          <div className="hero-ctas">
+            <button className="pill pill-coral" onClick={() => setSoonOpen(true)} data-testid="button-download-hero"><Download size={17} />{t.downloadMain}</button>
+            <a className="pill pill-outline" href="#como-funciona" data-testid="link-how"><Play size={15} />{t.see}</a>
           </div>
         </div>
-        <figure className="panorama-banner landing-wrap" aria-label={en ? 'Illustrated Medellín neighborhood panorama' : 'Panorama ilustrado de un barrio de Medellín'}>
-          <img src="/images/tanda-medellin-panorama.jpg" alt={en ? 'A hand-drawn Medellín street with neighborhood cafés, students, the Metrocable and green mountain ridges' : 'Una calle ilustrada de Medellín con cafés de barrio, estudiantes, el metro y montañas verdes'} />
-          <svg className="metrocable-overlay" viewBox="0 0 1440 455" preserveAspectRatio="none" aria-hidden="true">
-            <path className="cable-halo" d="M82 172 Q700 70 1358 142" />
-            <path className="cable-line" d="M82 172 Q700 70 1358 142" />
-            <g className="cable-tower" transform="translate(335 119) rotate(-8)">
-              <path d="M0 9h44M7 9l8 77m22-77-8 77M3 37h38M9 66h27" />
-              <path d="M-7 8h58" />
-            </g>
-            <g className="cable-tower" transform="translate(1036 105) rotate(5)">
-              <path d="M0 9h44M7 9l8 77m22-77-8 77M3 37h38M9 66h27" />
-              <path d="M-7 8h58" />
-            </g>
-            <g className="gondola gondola-secondary" transform="translate(852 97)">
-              <path className="hanger" d="M0 0v15" />
-              <path className="car-outline" d="M-18 15h36l-3 27q-15 9-30 0z" />
-              <path className="car-window" d="M-11 20h22l-2 12h-18z" />
-              <path className="car-base" d="M-13 44h26" />
-            </g>
-            <g className="gondola gondola-moving">
-              <path className="hanger" d="M0 0v15" />
-              <path className="car-outline" d="M-18 15h36l-3 27q-15 9-30 0z" />
-              <path className="car-window" d="M-11 20h22l-2 12h-18z" />
-              <path className="car-base" d="M-13 44h26" />
-            </g>
-          </svg>
-          <span className="panorama-cloud cloud-one" aria-hidden="true" />
-          <span className="panorama-cloud cloud-two" aria-hidden="true" />
+        <figure className="panorama" aria-label={en ? 'Hand-drawn Colombian street with students, a cable car and local shops' : 'Calle colombiana ilustrada con estudiantes, metrocable y comercios locales'}>
+          <img className="reference-panorama" src={`${import.meta.env.BASE_URL}images/tanda-reference-panorama.png`} alt={en ? 'Students, Colombian neighborhoods, coffee and cable cars. Discount stickers are illustrative examples, not live offers.' : 'Estudiantes, barrios colombianos, café y metrocable. Los descuentos ilustrados son ejemplos, no ofertas activas.'} />
         </figure>
-        <div className="hero-bottom">
-          <div className="landing-wrap hero-bottom-inner">
-            <span>{content.story1}</span>
-            <span className="hero-orbit-word">{en ? 'TANDA · MEDELLÍN · NEARBY' : 'TANDA · MEDELLÍN · CERCA'}</span>
-            <span>{content.story2}</span>
-          </div>
-        </div>
       </section>
 
-      <section id="beneficios" className="benefits-section landing-wrap">
-        <div className="benefits-intro">
-          <div className="student-index"><span>01</span><span className="index-rule" /><span>{en ? 'STUDENT LIFE' : 'VIDA ESTUDIANTIL'}</span></div>
-          <div className="student-copy"><p className="landing-kicker"><span />{content.sectionOverline}</p><h2>{content.sectionTitle}</h2><p>{content.sectionBody}</p></div>
-          <aside className="student-aside"><span className="aside-mark">“</span><p>{content.story1}</p><span className="aside-location">{content.story2}</span></aside>
-        </div>
+      <section id="beneficios" className="benefits landing-wrap">
+        <h2><span className="rays-l" aria-hidden="true" />{t.benefitsTitle}<span className="rays-r" aria-hidden="true" /></h2>
         <div className="benefit-cards">
-          {[
-            { icon: <Compass size={23} strokeWidth={1.7} />, title: content.card1, body: content.card1copy, tone: 'coral' },
-            { icon: <Tag size={23} strokeWidth={1.7} />, title: content.card2, body: content.card2copy, tone: 'apricot' },
-            { icon: <Store size={23} strokeWidth={1.7} />, title: content.card3, body: content.card3copy, tone: 'sky' },
-          ].map((card, index) => <article key={card.title} className={`benefit-card benefit-${card.tone}`}>
-            <span className="benefit-number">0{index + 1}</span>
-            <span className="benefit-icon" aria-hidden="true">{card.icon}</span>
-            <h3>{card.title}</h3><p>{card.body}</p>
+          {t.cards.map(([title, body], i) => <article key={title} className={`benefit-card tone-${i}`} data-testid={`card-benefit-${i}`}>
+            <span className="benefit-icon" aria-hidden="true">{icons[i]}</span>
+            <div><h3>{title}</h3><p>{body}</p></div>
           </article>)}
         </div>
       </section>
@@ -237,10 +214,19 @@ function Landing() {
     </main>
     <footer className="landing-footer">
       <div className="landing-wrap footer-inner">
-        <a className="landing-brand" href="#inicio"><span className="brand-mark">t</span><span>tanda</span></a>
+        <a className="landing-brand" href="#inicio">tanda</a>
         <p>{content.footerLine}</p><span>{content.footerNote}</span>
       </div>
     </footer>
+    {soonOpen && <div className="soon-backdrop" onClick={() => setSoonOpen(false)} data-testid="dialog-backdrop">
+      <div className="soon-dialog" role="dialog" aria-modal="true" aria-labelledby="soon-title" onClick={e => e.stopPropagation()}>
+        <button className="soon-close" onClick={() => setSoonOpen(false)} aria-label={t.close} autoFocus data-testid="button-close-dialog"><X size={18} /></button>
+        <span className="soon-tag">{en ? 'In development' : 'En desarrollo'}</span>
+        <h2 id="soon-title">{t.soonTitle}</h2>
+        <p>{t.soonBody}</p>
+        <button className="pill pill-coral" onClick={() => setSoonOpen(false)} data-testid="button-dialog-ok">{t.close}</button>
+      </div>
+    </div>}
   </div>;
 }
 
