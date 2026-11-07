@@ -652,3 +652,4 @@
   .landing-menu-button { border-radius: 50%; }
 }
 @media (prefers-reduced-motion: reduce) { .gondola, .cloud { animation: none !important; offset-distance: 40%; } }
+
