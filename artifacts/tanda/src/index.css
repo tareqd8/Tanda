@@ -592,7 +592,7 @@
 .hero-sub { margin: 4px 0 14px; font-size: clamp(15px, 1.9vw, 19px); font-weight: 600; color: #4a4549; }
 .hero-ctas { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
 .panorama { position: relative; margin: 0; padding: 0; overflow: hidden; border-radius: 0; background: #FFFCFB; }
-.reference-panorama { display: block; width: 100%; max-width: 2172px; height: auto; margin: 0 auto; }
+.reference-panorama { display: block; width: 85%; max-width: 1100px; height: auto; margin: 0 auto; }
 .panorama svg { display: block; width: 100%; height: clamp(190px, 26vw, 290px); }
 .cloud path { fill: #FFFCFB; stroke: #282529; stroke-width: .12; }
 .cloud { animation: cloud-drift 18s ease-in-out infinite alternate; }
@@ -648,7 +648,7 @@
   .header-cta { display: none; }
   .title-rays { display: none; }
   .panorama svg { height: 220px; }
-  .reference-panorama { width: 100%; max-width: 100%; margin-left: 0; }
+  .reference-panorama { width: 90%; max-width: 100%; margin: 0 auto; }
   .landing-menu-button { border-radius: 50%; }
 }
 @media (prefers-reduced-motion: reduce) { .gondola, .cloud { animation: none !important; offset-distance: 40%; } }
