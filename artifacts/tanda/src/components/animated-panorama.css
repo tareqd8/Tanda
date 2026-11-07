@@ -1,0 +1,87 @@
+.motion-panorama-container {
+  position: relative;
+}
+
+.panorama .motion-panorama-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 1;
+}
+
+.motion-panorama-svg .scene-mover {
+  transform-box: view-box;
+}
+
+.panorama-motion-toggle {
+  position: absolute;
+  right: 0;
+  bottom: -9px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #282529;
+  cursor: pointer;
+}
+
+.panorama-motion-toggle span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #28252935;
+  border-radius: 50%;
+  background: #fffcfbeb;
+  transition: border-color .2s, background-color .2s;
+}
+
+.panorama .panorama-motion-toggle svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.panorama-motion-toggle:hover span {
+  border-color: #f4513b;
+  background: #fff0eb;
+}
+
+.panorama-motion-toggle:focus-visible {
+  outline: 2px solid #f4513b;
+  outline-offset: -3px;
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .moving-cabin { animation: tanda-cable-travel 17s ease-in-out infinite alternate; }
+  .cabin-two { animation-delay: -9s; animation-duration: 19s; }
+  .cabin-sway { animation: tanda-cabin-sway 4.5s ease-in-out infinite alternate; }
+  .second-sway { animation-delay: -2s; animation-duration: 5.2s; }
+  .bicycle-spokes { animation: tanda-wheel-turn 2.4s linear infinite; }
+  .taxi-spokes { animation: tanda-wheel-turn 1.1s linear infinite; }
+  .motion-is-paused .scene-mover { animation-play-state: paused; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-panorama-svg .scene-mover { animation: none !important; }
+  .wheel-spokes { display: none; }
+  .panorama-motion-toggle { display: none; }
+}
+
+@keyframes tanda-cable-travel {
+  from { transform: translate(-10px, 4.5px); }
+  to { transform: translate(10px, -4.5px); }
+}
+
+@keyframes tanda-cabin-sway {
+  from { transform: rotate(-1deg); }
+  to { transform: rotate(1deg); }
+}
+
+@keyframes tanda-wheel-turn {
+  to { transform: rotate(360deg); }
+}

@@ -13,3 +13,9 @@ Treat screenshot crops as references, not final production artwork. Use delibera
 **Why:** The user rejected the screenshot-derived hero as blurry, then rejected automatic tracing because the faces, lettering and shapes were distorted. They explicitly asked to fix artwork before animation.
 
 **How to apply:** Preserve the approved composition without stretching or tracing screenshots. Inspect faces, hands, lettering and linework close-up before claiming quality is fixed; sharp edges alone are not enough.
+
+Without layered source art, prefer localized motion to translating complex foreground actors across the scene.
+
+**Why:** Whole-vehicle cutouts require reconstructing hidden backgrounds, which previously degraded the approved artwork. Limited cabin motion and wheel details preserve the people, architecture and vehicle bodies.
+
+**How to apply:** Keep the uploaded source unchanged, isolate only small moving details, and verify their motion and pause/reduced-motion behavior without introducing broad background patches.
