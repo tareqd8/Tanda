@@ -161,9 +161,9 @@ function Landing() {
         <figure className="panorama" aria-label={en ? 'Hand-drawn Colombian street with students, a cable car and local shops' : 'Calle colombiana ilustrada con estudiantes, metrocable y comercios locales'}>
           <img
             className="reference-panorama"
-            src={`${import.meta.env.BASE_URL}images/tanda-panorama-crisp.svg`}
-            width={1220}
-            height={292}
+            src={`${import.meta.env.BASE_URL}images/tanda-approved-panorama.png`}
+            width={2172}
+            height={724}
             fetchPriority="high"
             alt={en ? 'Colombian students sharing a phone, surrounded by coffee, hillside neighborhoods, cable cars, a taxi and a cyclist. Discount stickers are illustrative, not live offers.' : 'Estudiantes colombianos con un celular, rodeados de café, barrios en la montaña, metrocable, un taxi y una ciclista. Los descuentos ilustrados son ejemplos, no ofertas activas.'}
           />
