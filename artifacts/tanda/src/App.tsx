@@ -1,6 +1,6 @@
 import { type ReactNode, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ArrowRight, MapPin, Menu, X } from 'lucide-react';
+import { ArrowRight, Compass, MapPin, Menu, Store, Tag, X } from 'lucide-react';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -20,81 +20,93 @@ function Landing() {
 
   const en = language === 'en';
   const content = en ? {
-    links: ['How it works', 'For students', 'For local spots'],
-    heroKicker: 'YOUR CITY, WITH A LITTLE MORE ROOM',
-    heroTitle: <>Student life,<br /><em>with more to it.</em></>,
-    heroBody: 'Tanda brings student perks and neighborhood favorites together—so your budget can go a little further, every day.',
-    explore: 'See how it works',
-    partnerCta: 'Meet Tanda',
+    links: ['How it works', 'Benefits', 'For local spots'],
+    heroKicker: 'A NEW WAY TO FIND YOUR PLACE IN THE CITY',
+    heroTitle: <>Student life<br /><em>comes with its perks.</em></>,
+    heroBody: 'Tanda is an upcoming app in the making, bringing student perks and neighborhood favorites together. We’re starting in Medellín.',
+    explore: 'See how it could work',
+    partnerCta: 'For local places',
     locale: 'Medellín, Colombia · starting close to home',
-    story1: 'Your student days, a little lighter.',
-    story2: 'Built for Medellín. Made to feel close.',
-    sectionOverline: 'MADE FOR THE IN-BETWEEN',
-    sectionTitle: <>Good things happen<br />between classes.</>,
-    sectionBody: 'The quick coffee before a lecture. A new place to meet a friend. Tanda is being designed to make those everyday plans feel more affordable.',
+    story1: 'Your city, one neighborhood at a time.',
+    story2: 'Made with Medellín in mind.',
+    sectionOverline: 'THE IDEA, IN THREE PARTS',
+    sectionTitle: <>More close-by<br />things to look forward to.</>,
+    sectionBody: 'Tanda is in early development. We’re imagining a simpler way for students to discover independent places, find future savings and keep local neighborhoods thriving.',
+    card1: 'Discover nearby',
+    card1copy: 'A future guide to cafés, shops and small favorites around your campus and neighborhood.',
+    card2: 'Student savings, ahead',
+    card2copy: 'We’re working toward useful student perks for everyday plans. Offers are not live yet.',
+    card3: 'Keep it local',
+    card3copy: 'A future way to help more student spending find its way to neighborhood businesses.',
     stepsEyebrow: 'A GOOD THING, MADE SIMPLE',
     stepsTitle: 'A little closer to your next favorite.',
     step1: 'Discover nearby',
-    step1copy: 'Browse local offers by neighborhood and find a new favorite around the corner.',
-    step2: 'Verify your student status',
-    step2copy: 'A future verification flow will help participating partners recognize eligible students. No verification happens on this site.',
-    step3: 'Enjoy the student perk',
-    step3copy: 'Show the offer in the Tanda app at a participating local spot, subject to its terms.',
+    step1copy: 'The planned app will help students explore local places by neighborhood and find a new favorite around the corner.',
+    step2: 'Student eligibility',
+    step2copy: 'A student verification flow is being considered for the future app. No verification happens on this site.',
+    step3: 'Use a future perk',
+    step3copy: 'If local partners join, eligible students may be able to use their perks through the future app, subject to each partner’s terms.',
     verificationNote: 'Student verification is part of the planned app experience. This website does not collect or verify student information.',
     partnerEyebrow: 'GOOD FOR THE NEIGHBORHOOD',
     partnerTitle: <>Local spots.<br /><em>Student energy.</em></>,
     partnerBody: 'Tanda is being built around independent cafés, shops and experiences that make a city feel like yours. We want student spending to support the people and places close by.',
-    partnerLink: 'Explore the idea',
-    featured: 'A pause in Laureles',
-    sampleOffer: '20% off coffee + pandebono',
-    sampleNote: 'Illustrative sample offer · fictional business',
-    benefitKicker: 'COMING TO YOUR POCKET',
-    benefitTitle: 'Little savings add up.',
-    benefitBody: 'A simple place to find useful student benefits—without losing the local character that makes a neighborhood special.',
+    partnerLink: 'How it could work',
+    featured: 'A neighborhood pause',
+    sampleOffer: 'Independent places, at the heart of it',
+    sampleNote: 'Editorial photograph · no offer is currently available',
+    benefitKicker: 'A STUDENT-PERKS APP IN THE MAKING',
+    benefitTitle: 'Little savings, rooted here.',
+    benefitBody: 'Tanda is being developed as a future place to discover student perks while staying connected to the local character that makes a neighborhood special.',
     comingSoon: 'THE TANDA MOBILE APP IS IN DEVELOPMENT',
     notLive: 'Tanda is in the making. This site is an introduction, not an enrollment or offer redemption service.',
     footerLine: 'A closer way to live your city.',
-    footerNote: 'Tanda is an upcoming mobile app. Offers shown are fictional examples.',
+    footerNote: 'Tanda is an upcoming mobile app. No offers are live on this site.',
   } : {
-    links: ['Cómo funciona', 'Para estudiantes', 'Negocios locales'],
-    heroKicker: 'TU CIUDAD, CON UN POCO MÁS DE AIRE',
-    heroTitle: <>La vida de estudiante<br /><em>rinde más.</em></>,
-    heroBody: 'Tanda reúne beneficios estudiantiles y favoritos de barrio para que tu presupuesto alcance un poco más, todos los días.',
-    explore: 'Así funcionará',
-    partnerCta: 'Conoce Tanda',
+    links: ['Cómo funciona', 'Beneficios', 'Negocios locales'],
+    heroKicker: 'UNA NUEVA FORMA DE ENCONTRAR TU LUGAR EN LA CIUDAD',
+    heroTitle: <>Ser estudiante<br /><em>tiene sus beneficios.</em></>,
+    heroBody: 'Tanda será una app que conecte beneficios estudiantiles con favoritos de barrio. Estamos empezando en Medellín.',
+    explore: 'Así podría funcionar',
+    partnerCta: 'Para negocios locales',
     locale: 'Medellín, Colombia · empezamos cerca de casa',
-    story1: 'Tus días de estudiante, un poco más ligeros.',
-    story2: 'Hecho para Medellín. Pensado para sentirse cerca.',
-    sectionOverline: 'PENSADO PARA LOS RATOS ENTRE CLASES',
-    sectionTitle: <>Entre clase y clase<br />pasan cosas buenas.</>,
-    sectionBody: 'Un café rápido antes de entrar. Un lugar nuevo para encontrarte con alguien. Tanda nace para que esos planes cotidianos sean un poco más amables con tu bolsillo.',
+    story1: 'Tu ciudad, barrio a barrio.',
+    story2: 'Pensado desde Medellín.',
+    sectionOverline: 'LA IDEA, EN TRES PARTES',
+    sectionTitle: <>Más planes cerca<br />para imaginar.</>,
+    sectionBody: 'Tanda está en una etapa temprana de desarrollo. Imaginamos una forma sencilla para que estudiantes descubran lugares independientes, encuentren ahorros a futuro y mantengan vivos los barrios.',
+    card1: 'Descubre cerca',
+    card1copy: 'Una guía futura de cafés, tiendas y pequeños favoritos cerca de tu campus y tu barrio.',
+    card2: 'Ahorros estudiantiles, pronto',
+    card2copy: 'Trabajamos para ofrecer beneficios útiles para los planes de todos los días. Aún no hay ofertas activas.',
+    card3: 'Que siga lo local',
+    card3copy: 'Una forma futura de ayudar a que más compras estudiantiles lleguen a los negocios del barrio.',
     stepsEyebrow: 'LO BUENO, SIN VUELTAS',
     stepsTitle: 'Un poco más cerca de tu próximo favorito.',
     step1: 'Descubre cerca',
-    step1copy: 'Explora ofertas locales por barrio y encuentra un nuevo favorito a la vuelta.',
-    step2: 'Verifica tu condición de estudiante',
-    step2copy: 'Un futuro proceso de verificación ayudará a los comercios participantes a reconocer estudiantes elegibles. Este sitio no verifica a nadie.',
-    step3: 'Disfruta el beneficio',
-    step3copy: 'Presenta la oferta en la app de Tanda en un comercio participante, según sus condiciones.',
+    step1copy: 'La app planeada ayudará a explorar lugares locales por barrio y a encontrar un nuevo favorito a la vuelta.',
+    step2: 'Elegibilidad estudiantil',
+    step2copy: 'Estamos considerando un proceso de verificación estudiantil para la app futura. Este sitio no verifica a nadie.',
+    step3: 'Usa un beneficio futuro',
+    step3copy: 'Si se suman comercios locales, estudiantes elegibles podrían usar beneficios desde la app futura, según las condiciones de cada negocio.',
     verificationNote: 'La verificación estudiantil hará parte de la app futura. Este sitio no recopila ni verifica información de estudiantes.',
     partnerEyebrow: 'BUENO PARA EL BARRIO',
     partnerTitle: <>Comercios locales.<br /><em>Energía estudiante.</em></>,
     partnerBody: 'Tanda se está construyendo alrededor de cafés independientes, tiendas y experiencias que hacen que una ciudad se sienta tuya. Queremos que el gasto estudiantil apoye a las personas y lugares cercanos.',
-    partnerLink: 'Descubre la idea',
-    featured: 'Una pausa en Laureles',
-    sampleOffer: '20% en café + pandebono',
-    sampleNote: 'Oferta ilustrativa · comercio ficticio',
-    benefitKicker: 'PRONTO, EN TU BOLSILLO',
-    benefitTitle: 'Los pequeños ahorros suman.',
-    benefitBody: 'Un lugar sencillo para encontrar beneficios estudiantiles útiles, sin perder el carácter local que hace especial a cada barrio.',
+    partnerLink: 'Así podría funcionar',
+    featured: 'Una pausa de barrio',
+    sampleOffer: 'Comercios independientes, en el centro',
+    sampleNote: 'Fotografía editorial · aún no hay ofertas disponibles',
+    benefitKicker: 'UNA APP DE BENEFICIOS ESTUDIANTILES EN DESARROLLO',
+    benefitTitle: 'Pequeños ahorros, con raíces aquí.',
+    benefitBody: 'Tanda se está desarrollando como un espacio futuro para descubrir beneficios estudiantiles y seguir conectados con el carácter local de cada barrio.',
     comingSoon: 'LA APP MÓVIL DE TANDA ESTÁ EN DESARROLLO',
     notLive: 'Tanda está en desarrollo. Este sitio es una presentación, no un registro ni un servicio para canjear ofertas.',
     footerLine: 'Una forma más cercana de vivir tu ciudad.',
-    footerNote: 'Tanda será una app móvil. Las ofertas aquí son ejemplos ficticios.',
+    footerNote: 'Tanda será una app móvil. Este sitio no tiene ofertas activas.',
   };
 
   const nav = <>{content.links.map((label, index) => (
-    <a key={label} href={['#como-funciona', '#estudiantes', '#comercios'][index]} onClick={() => setMenuOpen(false)}>{label}</a>
+    <a key={label} href={['#como-funciona', '#beneficios', '#comercios'][index]} onClick={() => setMenuOpen(false)}>{label}</a>
   ))}</>;
 
   return <div className="landing-shell">
@@ -113,11 +125,6 @@ function Landing() {
 
     <main id="inicio">
       <section className="landing-hero">
-        <figure className="panorama-banner" aria-label={en ? 'Illustrated Medellín neighborhood panorama' : 'Panorama ilustrado de un barrio de Medellín'}>
-          <img src="/images/tanda-medellin-panorama.jpg" alt={en ? 'A hand-drawn Medellín street with neighborhood cafés, students, the Metrocable and green mountain ridges' : 'Una calle ilustrada de Medellín con cafés de barrio, estudiantes, el metro y montañas verdes'} />
-          <span className="panorama-cloud cloud-one" aria-hidden="true" />
-          <span className="panorama-cloud cloud-two" aria-hidden="true" />
-        </figure>
         <div className="landing-wrap hero-layout">
           <div className="hero-copy">
             <p className="landing-kicker"><span />{content.heroKicker}</p>
@@ -132,6 +139,35 @@ function Landing() {
             <p className="hero-footnote"><MapPin size={14} />{content.locale}</p>
           </div>
         </div>
+        <figure className="panorama-banner landing-wrap" aria-label={en ? 'Illustrated Medellín neighborhood panorama' : 'Panorama ilustrado de un barrio de Medellín'}>
+          <img src="/images/tanda-medellin-panorama.jpg" alt={en ? 'A hand-drawn Medellín street with neighborhood cafés, students, the Metrocable and green mountain ridges' : 'Una calle ilustrada de Medellín con cafés de barrio, estudiantes, el metro y montañas verdes'} />
+          <svg className="metrocable-overlay" viewBox="0 0 1440 455" preserveAspectRatio="none" aria-hidden="true">
+            <path className="cable-halo" d="M82 172 Q700 70 1358 142" />
+            <path className="cable-line" d="M82 172 Q700 70 1358 142" />
+            <g className="cable-tower" transform="translate(335 119) rotate(-8)">
+              <path d="M0 9h44M7 9l8 77m22-77-8 77M3 37h38M9 66h27" />
+              <path d="M-7 8h58" />
+            </g>
+            <g className="cable-tower" transform="translate(1036 105) rotate(5)">
+              <path d="M0 9h44M7 9l8 77m22-77-8 77M3 37h38M9 66h27" />
+              <path d="M-7 8h58" />
+            </g>
+            <g className="gondola gondola-secondary" transform="translate(852 97)">
+              <path className="hanger" d="M0 0v15" />
+              <path className="car-outline" d="M-18 15h36l-3 27q-15 9-30 0z" />
+              <path className="car-window" d="M-11 20h22l-2 12h-18z" />
+              <path className="car-base" d="M-13 44h26" />
+            </g>
+            <g className="gondola gondola-moving">
+              <path className="hanger" d="M0 0v15" />
+              <path className="car-outline" d="M-18 15h36l-3 27q-15 9-30 0z" />
+              <path className="car-window" d="M-11 20h22l-2 12h-18z" />
+              <path className="car-base" d="M-13 44h26" />
+            </g>
+          </svg>
+          <span className="panorama-cloud cloud-one" aria-hidden="true" />
+          <span className="panorama-cloud cloud-two" aria-hidden="true" />
+        </figure>
         <div className="hero-bottom">
           <div className="landing-wrap hero-bottom-inner">
             <span>{content.story1}</span>
@@ -141,10 +177,23 @@ function Landing() {
         </div>
       </section>
 
-      <section id="estudiantes" className="student-section landing-wrap">
-        <div className="student-index"><span>01</span><span className="index-rule" /><span>{en ? 'STUDENT LIFE' : 'VIDA ESTUDIANTIL'}</span></div>
-        <div className="student-copy"><p className="landing-kicker"><span />{content.sectionOverline}</p><h2>{content.sectionTitle}</h2><p>{content.sectionBody}</p><a className="text-link" href="#como-funciona">{en ? 'See the steps' : 'Mira cómo funciona'}<ArrowRight size={15} /></a></div>
-        <aside className="student-aside"><span className="aside-mark">“</span><p>{content.story1}</p><span className="aside-location">{content.story2}</span></aside>
+      <section id="beneficios" className="benefits-section landing-wrap">
+        <div className="benefits-intro">
+          <div className="student-index"><span>01</span><span className="index-rule" /><span>{en ? 'STUDENT LIFE' : 'VIDA ESTUDIANTIL'}</span></div>
+          <div className="student-copy"><p className="landing-kicker"><span />{content.sectionOverline}</p><h2>{content.sectionTitle}</h2><p>{content.sectionBody}</p></div>
+          <aside className="student-aside"><span className="aside-mark">“</span><p>{content.story1}</p><span className="aside-location">{content.story2}</span></aside>
+        </div>
+        <div className="benefit-cards">
+          {[
+            { icon: <Compass size={23} strokeWidth={1.7} />, title: content.card1, body: content.card1copy, tone: 'coral' },
+            { icon: <Tag size={23} strokeWidth={1.7} />, title: content.card2, body: content.card2copy, tone: 'apricot' },
+            { icon: <Store size={23} strokeWidth={1.7} />, title: content.card3, body: content.card3copy, tone: 'sky' },
+          ].map((card, index) => <article key={card.title} className={`benefit-card benefit-${card.tone}`}>
+            <span className="benefit-number">0{index + 1}</span>
+            <span className="benefit-icon" aria-hidden="true">{card.icon}</span>
+            <h3>{card.title}</h3><p>{card.body}</p>
+          </article>)}
+        </div>
       </section>
 
       <section id="como-funciona" className="how-section">
