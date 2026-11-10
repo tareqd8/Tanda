@@ -1,0 +1,232 @@
+.logo-admin-page {
+  --logo-ink: #282529;
+  --logo-muted: #746b70;
+  --logo-paper: #fffaf7;
+  --logo-coral: #f4513b;
+  min-height: 100dvh;
+  color: var(--logo-ink);
+  background:
+    radial-gradient(ellipse at 83% 9%, rgba(238, 234, 248, .82), transparent 28rem),
+    radial-gradient(ellipse at 3% 38%, rgba(251, 227, 222, .64), transparent 30rem),
+    #fffaf7;
+  font-family: 'Nunito', sans-serif;
+}
+.logo-admin-header {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  display: flex;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 max(32px, calc((100vw - 1080px) / 2));
+  border-bottom: 1px solid rgba(40, 37, 41, .08);
+  background: rgba(255, 250, 247, .9);
+  backdrop-filter: blur(16px);
+}
+.logo-admin-wordmark {
+  color: var(--logo-ink);
+  font-size: 27px;
+  font-weight: 1000;
+  letter-spacing: -.09em;
+  text-decoration: none;
+}
+.logo-admin-wordmark span { color: var(--logo-coral); }
+.logo-admin-header-actions { display: flex; align-items: center; gap: 18px; }
+.logo-admin-language,
+.logo-admin-signout,
+.logo-admin-public-link {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  color: var(--logo-ink);
+  font: 800 12px 'Nunito', sans-serif;
+  text-decoration: none;
+}
+.logo-admin-language {
+  width: 38px;
+  min-height: 32px;
+  border: 1px solid rgba(40, 37, 41, .13);
+  border-radius: 99px;
+}
+.logo-admin-public-link svg { transform: rotate(180deg); }
+.logo-admin-signout { color: var(--logo-muted); }
+.logo-admin-content { width: min(780px, calc(100% - 40px)); margin: 0 auto; padding: 64px 0 70px; }
+.logo-admin-heading { margin-bottom: 42px; }
+.logo-admin-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #3e7b5c;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.logo-admin-heading h1 {
+  margin: 14px 0 8px;
+  font-size: clamp(36px, 5.6vw, 52px);
+  font-weight: 1000;
+  letter-spacing: -.07em;
+  line-height: 1;
+}
+.logo-admin-heading > p { margin: 0; color: var(--logo-muted); font-size: 15px; line-height: 1.6; }
+.logo-admin-user { display: inline-block; margin-top: 10px; color: #988d92; font-size: 12px; }
+.logo-admin-current,
+.logo-admin-upload {
+  margin-top: 22px;
+  padding: 24px;
+  border: 1px solid rgba(40, 37, 41, .1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .76);
+  box-shadow: 0 12px 35px rgba(66, 43, 56, .035);
+}
+.logo-admin-section-title { display: flex; align-items: center; gap: 13px; }
+.logo-admin-section-title > span { color: var(--logo-coral); font-size: 11px; font-weight: 900; }
+.logo-admin-section-title h2 { margin: 0; font-size: 19px; font-weight: 1000; letter-spacing: -.04em; }
+.logo-admin-preview {
+  display: flex;
+  min-height: 122px;
+  align-items: center;
+  gap: 18px;
+  margin-top: 21px;
+  padding: 17px;
+  border: 1px solid rgba(40, 37, 41, .08);
+  border-radius: 14px;
+  background: #fffaf7;
+}
+.logo-admin-preview-mark {
+  display: grid;
+  width: 176px;
+  height: 78px;
+  flex: 0 0 176px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(40, 37, 41, .08);
+  border-radius: 11px;
+  background: #fff;
+}
+.logo-admin-preview-mark img { display: block; max-width: 90%; max-height: 70px; object-fit: contain; }
+.logo-admin-fallback { color: var(--logo-ink); font-size: 33px; font-weight: 1000; letter-spacing: -.1em; }
+.logo-admin-fallback span { color: var(--logo-coral); }
+.logo-admin-preview-meta { display: grid; min-width: 0; gap: 4px; }
+.logo-admin-preview-meta strong { overflow: hidden; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
+.logo-admin-preview-meta > span,
+.logo-admin-preview-meta small { color: var(--logo-muted); font-size: 11px; line-height: 1.45; }
+.logo-admin-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  padding: 5px 8px;
+  border-radius: 99px;
+  background: #e8f4ec;
+  color: #397651;
+  font-size: 9px;
+  font-weight: 1000;
+  letter-spacing: .04em;
+}
+.logo-admin-upload > p { margin: 8px 0 18px 28px; color: var(--logo-muted); font-size: 12px; line-height: 1.55; }
+.logo-admin-dropzone {
+  display: flex;
+  min-height: 122px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1.5px dashed rgba(40, 37, 41, .23);
+  border-radius: 14px;
+  background: #fffdfc;
+  cursor: pointer;
+  transition: border-color .18s, background-color .18s, transform .18s;
+}
+.logo-admin-dropzone:hover,
+.logo-admin-dropzone.has-file { border-color: var(--logo-coral); background: #fff6f2; }
+.logo-admin-dropzone:hover { transform: translateY(-1px); }
+.logo-admin-dropzone input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); }
+.logo-admin-dropzone:focus-within { outline: 2px solid var(--logo-coral); outline-offset: 3px; }
+.logo-admin-upload-icon { display: grid; width: 34px; height: 34px; margin-bottom: 3px; place-items: center; border-radius: 11px; background: #fbe3de; color: var(--logo-coral); }
+.logo-admin-dropzone strong { max-width: calc(100% - 24px); overflow: hidden; font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.logo-admin-dropzone small { color: #968b91; font-size: 10px; }
+.logo-admin-actions,
+.logo-admin-confirm > div { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
+.logo-admin-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: 900 12px 'Nunito', sans-serif;
+  transition: transform .16s, background-color .16s, box-shadow .16s;
+}
+.logo-admin-button:not(:disabled):hover { transform: translateY(-1px); }
+.logo-admin-button:disabled { cursor: not-allowed; opacity: .55; }
+.logo-admin-button-primary { background: var(--logo-coral); color: #fff; box-shadow: 0 6px 14px rgba(244, 81, 59, .18); }
+.logo-admin-button-danger { border-color: #efd5d0; background: #fff; color: #bd3b2a; }
+.logo-admin-button-quiet { background: transparent; color: var(--logo-muted); }
+.logo-admin-confirm { margin-top: 16px; padding: 14px; border-radius: 12px; background: #fff1ec; }
+.logo-admin-confirm p { margin: 0; color: #5d3935; font-size: 12px; line-height: 1.5; }
+.logo-admin-confirm > div { margin-top: 8px; }
+.logo-admin-alert { display: flex; align-items: center; gap: 9px; margin: 0 0 15px; padding: 12px 14px; border: 1px solid #f0c9c2; border-radius: 12px; background: #fff0ed; color: #9e2c20; font-size: 12px; line-height: 1.5; }
+.logo-admin-footnote { margin: 17px 4px 0; color: #8b8086; font-size: 11px; text-align: right; }
+.logo-admin-state { display: flex; min-height: 72vh; flex-direction: column; align-items: center; justify-content: center; gap: 11px; padding: 24px; text-align: center; }
+.logo-admin-state h1 { margin: 0; font-size: 31px; font-weight: 1000; letter-spacing: -.06em; }
+.logo-admin-state p,
+.logo-admin-state small { max-width: 380px; margin: 0; color: var(--logo-muted); font-size: 14px; line-height: 1.6; }
+.logo-admin-state-icon { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 16px; background: #fbe3de; color: var(--logo-coral); }
+.logo-admin-back,
+.logo-admin-text-link { color: #ba3f2e; font-size: 12px; font-weight: 900; text-decoration: none; }
+.logo-admin-back { margin-top: 20px; color: var(--logo-muted); }
+.logo-admin-spinner { animation: logo-admin-spin .8s linear infinite; }
+.tanda-auth-shell {
+  position: relative;
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: 84px 20px 32px;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(238, 234, 248, .9), transparent 26rem),
+    radial-gradient(ellipse at 84% 79%, rgba(251, 227, 222, .86), transparent 27rem),
+    #fffaf7;
+}
+.tanda-auth-brand {
+  position: absolute;
+  top: 25px;
+  left: max(24px, calc((100vw - 1100px) / 2));
+  color: var(--logo-ink);
+  font-size: 31px;
+  font-weight: 1000;
+  letter-spacing: -.1em;
+  text-decoration: none;
+}
+.tanda-auth-brand span { color: var(--logo-coral); }
+@keyframes logo-admin-spin { to { transform: rotate(360deg); } }
+@media (max-width: 620px) {
+  .logo-admin-header { min-height: 62px; padding: 0 17px; }
+  .logo-admin-header-actions { gap: 8px; }
+  .logo-admin-public-link { font-size: 0; }
+  .logo-admin-public-link svg { width: 17px; height: 17px; }
+  .logo-admin-signout { font-size: 0; }
+  .logo-admin-signout svg { width: 17px; height: 17px; }
+  .logo-admin-content { padding: 40px 0 48px; }
+  .logo-admin-heading { margin-bottom: 28px; }
+  .logo-admin-current, .logo-admin-upload { padding: 17px; border-radius: 16px; }
+  .logo-admin-preview { flex-wrap: wrap; gap: 12px; padding: 12px; }
+  .logo-admin-preview-mark { width: 100%; height: 92px; flex-basis: 100%; }
+  .logo-admin-preview-meta { flex: 1; }
+  .logo-admin-upload > p { margin-left: 0; }
+  .logo-admin-live { margin-left: 0; }
+  .logo-admin-footnote { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-admin-spinner { animation: none; }
+  .logo-admin-button,
+  .logo-admin-dropzone { transition: none; }
+}

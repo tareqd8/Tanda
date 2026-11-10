@@ -22,3 +22,8 @@ timeoutMs = 20000
 [nix]
 channel = "stable-25_05"
 packages = ["zstd"]
+
+[userenv]
+
+[userenv.shared]
+TANDA_ADMIN_EMAIL = "tareq.dababneh@tanda.com.co"

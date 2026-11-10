@@ -10,6 +10,10 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: branding
+    description: Public brand assets and restricted logo management
+  - name: storage
+    description: Persistent file upload and serving
 paths:
   /healthz:
     get:
@@ -24,6 +28,137 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /branding/logo:
+    get:
+      operationId: getBrandLogo
+      tags: [branding]
+      summary: Get the current public Tanda logo
+      responses:
+        "200":
+          description: Current public logo metadata, if one is configured
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrandLogo"
+    put:
+      operationId: updateBrandLogo
+      tags: [branding]
+      summary: Set the current logo to an uploaded image
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BrandLogoInput"
+      responses:
+        "200":
+          description: Logo settings updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrandLogo"
+        "400":
+          description: Invalid logo upload
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "401":
+          description: Sign-in required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "403":
+          description: Administrator access required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+    delete:
+      operationId: removeBrandLogo
+      tags: [branding]
+      summary: Remove the current uploaded logo
+      responses:
+        "200":
+          description: Uploaded logo removed
+          content:
+            application/json:
+              schema:
+                  $ref: "#/components/schemas/RemoveLogoResult"
+        "401":
+          description: Sign-in required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "403":
+          description: Administrator access required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /branding/logo/admin:
+    get:
+      operationId: getAdminBrandLogo
+      tags: [branding]
+      summary: Get logo settings for an approved administrator
+      responses:
+        "200":
+          description: Current logo settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrandLogo"
+        "401":
+          description: Sign-in required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "403":
+          description: Administrator access required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+  /storage/uploads/request-url:
+    post:
+      operationId: requestUploadUrl
+      tags: [storage]
+      summary: Request an authenticated direct-upload URL
+      description: The uploaded file is sent directly to object storage, never through the API server.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UploadUrlRequest"
+      responses:
+        "200":
+          description: Presigned upload URL
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UploadUrlResponse"
+        "400":
+          description: Invalid file type or size
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "401":
+          description: Sign-in required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+        "403":
+          description: Administrator access required
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +168,67 @@ components:
           type: string
       required:
         - status
+    BrandLogo:
+      type: object
+      required: [logoUrl, filename, contentType, updatedAt]
+      properties:
+        logoUrl:
+          type: [string, "null"]
+        filename:
+          type: [string, "null"]
+        contentType:
+          type: [string, "null"]
+        updatedAt:
+          type: [string, "null"]
+          format: date-time
+    BrandLogoInput:
+      type: object
+      required: [objectPath, filename, contentType]
+      properties:
+        objectPath:
+          type: string
+          minLength: 1
+        filename:
+          type: string
+          minLength: 1
+          maxLength: 255
+        contentType:
+          type: string
+          minLength: 1
+    RemoveLogoResult:
+      type: object
+      required: [success]
+      properties:
+        success:
+          type: boolean
+    UploadUrlRequest:
+      type: object
+      required: [name, size, contentType]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        size:
+          type: integer
+          minimum: 1
+        contentType:
+          type: string
+          minLength: 1
+    UploadUrlResponse:
+      type: object
+      required: [uploadURL, objectPath]
+      properties:
+        uploadURL:
+          type: string
+          format: uri
+        objectPath:
+          type: string
+        metadata:
+          $ref: "#/components/schemas/UploadUrlRequest"
+    ErrorEnvelope:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
 

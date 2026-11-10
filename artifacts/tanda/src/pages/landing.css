@@ -1,0 +1,349 @@
+.tanda-page {
+  --tanda-ink: #29252a;
+  --tanda-muted: #6f676d;
+  --tanda-coral: #f4513b;
+  --tanda-paper: #fff9f7;
+  --tanda-line: #eadfdf;
+  min-height: 100dvh;
+  overflow: clip;
+  color: var(--tanda-ink);
+  background:
+    radial-gradient(ellipse at 82% 14%, rgba(255, 225, 227, .7), transparent 31rem),
+    #fff9f7;
+  font-family: 'Nunito', sans-serif;
+}
+.tanda-page *, .tanda-page *::before, .tanda-page *::after { box-sizing: border-box; }
+.tanda-page a { color: inherit; }
+.tanda-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  height: 62px;
+  background: rgba(255, 249, 247, .94);
+  border-bottom: 1px solid rgba(234, 223, 223, .7);
+  backdrop-filter: blur(18px);
+}
+.tanda-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1120px, calc(100% - 64px));
+  height: 100%;
+  margin: auto;
+}
+.tanda-brand { display: inline-flex; align-items: center; text-decoration: none; }
+.tanda-logo-slot { position: relative; display: inline-flex; align-items: center; min-width: 86px; min-height: 38px; }
+.tanda-logo-fallback { color: var(--tanda-ink); font-size: 31px; font-weight: 1000; line-height: 1; letter-spacing: -.075em; }
+.tanda-logo-spark {
+  position: absolute; top: -1px; right: 1px; width: 15px; fill: none; stroke: var(--tanda-coral);
+  stroke-linecap: round; stroke-width: 2; transform-origin: center; animation: tanda-mark-sparkle 2.8s ease-in-out infinite;
+}
+/* Admin-managed mark replaces the fallback inside this stable slot. */
+.tanda-logo-slot[data-logo-slot="replaceable-brand-mark"] { isolation: isolate; }
+.tanda-logo-slot[data-logo-ready="true"] .tanda-logo-fallback,
+.tanda-logo-slot[data-logo-ready="true"] .tanda-logo-spark { display: none; }
+.tanda-stored-logo { display: block; width: 100%; max-width: 100px; max-height: 40px; object-fit: contain; object-position: left center; }
+.tanda-nav { display: flex; align-items: center; gap: clamp(24px, 4vw, 54px); }
+.tanda-nav a, .tanda-mobile-nav a {
+  position: relative; color: #514950; font-size: 13px; font-weight: 800; text-decoration: none;
+}
+.tanda-nav a::after {
+  position: absolute; right: 100%; bottom: -7px; left: 0; height: 2px;
+  background: var(--tanda-coral); content: ''; transition: right .2s ease;
+}
+.tanda-nav a:hover::after { right: 0; }
+.tanda-header-actions { display: flex; align-items: center; gap: 11px; }
+.tanda-language {
+  min-width: 40px; height: 33px; padding: 0 9px; border: 1px solid var(--tanda-line);
+  border-radius: 99px; color: var(--tanda-ink); background: transparent; font-size: 11px;
+  font-weight: 900; cursor: pointer;
+}
+.tanda-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px;
+  padding: 0 19px; border: 1px solid transparent; border-radius: 999px;
+  font: 900 13px/1 'Nunito', sans-serif; text-decoration: none; cursor: pointer;
+  transition: transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.tanda-button:hover { transform: translateY(-2px); }
+.button-coral { color: #fff9f7; background: var(--tanda-coral); box-shadow: 0 5px 13px -8px rgba(244,81,59,.8); }
+.button-coral:hover { background: #df402e; box-shadow: 0 8px 17px -9px rgba(244,81,59,.7); }
+.tanda-page .header-download { min-height: 35px; padding-inline: 15px; font-size: 11px; }
+.button-quiet { border-color: #837a80; color: var(--tanda-ink); background: rgba(255,255,255,.55); }
+.button-quiet:hover { border-color: var(--tanda-coral); }
+.tanda-menu-toggle, .tanda-mobile-nav { display: none; }
+
+.tanda-hero { padding: 14px 0 0; }
+.hero-inner {
+  display: grid; grid-template-columns: minmax(360px, .97fr) minmax(390px, 1.03fr);
+  align-items: center; width: min(1080px, calc(100% - 64px)); min-height: 355px;
+  margin: auto; gap: 22px;
+}
+.hero-copy { z-index: 1; padding: 14px 0 31px 2px; }
+.tanda-eyebrow {
+  display: flex; align-items: center; gap: 9px; margin: 0 0 15px;
+  color: #776d73; font-size: 9px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
+}
+.eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tanda-coral); }
+.hero-copy h1 {
+  margin: 0; font-size: clamp(3.35rem, 6.5vw, 5.2rem); font-weight: 1000;
+  line-height: .99; letter-spacing: -.075em;
+}
+.hero-copy h1 span { position: relative; z-index: 0; display: inline-block; color: #fffaf7; white-space: nowrap; }
+.hero-copy h1 span::before {
+  position: absolute; z-index: -1; inset: .04em -.08em -.03em -.09em; border-radius: .12em .2em .14em .2em;
+  background: var(--tanda-coral); content: ''; transform: rotate(-1deg);
+}
+.hero-intro { max-width: 420px; margin: 18px 0 19px; color: #655d63; font-size: 14px; font-weight: 700; line-height: 1.6; }
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-location { display: flex; align-items: center; gap: 7px; margin-top: 19px; color: #776d73; font-size: 10px; font-weight: 800; }
+.hero-location svg { color: var(--tanda-coral); }
+.phone-stage {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  min-height: 372px; isolation: isolate; transform: translateY(1px);
+}
+.phone-stage::before {
+  position: absolute; z-index: -2; top: 7%; left: 12%; width: 76%; height: 80%;
+  border-radius: 49% 51% 44% 56% / 43% 44% 56% 57%; background: #f8e4ef; content: ''; transform: rotate(-8deg);
+}
+.phone-orbit { position: absolute; z-index: -1; border: 1px solid rgba(244,81,59,.19); border-radius: 50%; }
+.orbit-one { width: 82%; aspect-ratio: 1; transform: rotate(-23deg) scaleY(.72); }
+.orbit-two { width: 69%; aspect-ratio: 1; border-color: rgba(129,107,169,.2); transform: rotate(31deg) scaleY(.74); }
+.phone {
+  position: absolute; overflow: hidden; border: 5px solid #302a30; border-radius: 32px;
+  background: #302a30; box-shadow: 0 22px 45px rgba(54, 41, 49, .2), 0 5px 12px rgba(54, 41, 49, .1);
+}
+.phone-front { z-index: 2; left: 20%; width: 202px; height: 365px; transform: rotate(-4deg) translateY(1px); }
+.phone-back { z-index: 1; right: 9%; width: 181px; height: 327px; transform: rotate(8deg) translateY(18px); }
+.phone-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 26px; background: #fffaf7; }
+.phone-speaker { position: absolute; z-index: 3; top: 7px; left: 50%; width: 54px; height: 12px; border-radius: 12px; background: #302a30; transform: translateX(-50%); }
+.phone-status { display: flex; justify-content: space-between; padding: 10px 13px 0; color: #423b42; font: 800 7px/1 'Nunito', sans-serif; }
+.phone-wordmark { margin: 12px 12px 10px; color: var(--tanda-ink); font-size: 17px; font-weight: 1000; line-height: 1; letter-spacing: -.08em; }
+.phone-wordmark span { color: var(--tanda-coral); }
+.phone-front .phone-screen h3 { margin: 0 12px 2px; font-size: 14px; font-weight: 1000; letter-spacing: -.04em; }
+.phone-subline { margin: 0 12px 10px; color: #81777e; font-size: 7px; font-weight: 700; }
+.phone-search { display: flex; align-items: center; gap: 6px; height: 27px; margin: 0 10px 12px; padding: 0 8px; border: 1px solid #eee4e4; border-radius: 9px; color: #857a81; background: #fff; font-size: 6px; font-weight: 700; }
+.phone-search svg { color: var(--tanda-coral); }
+.phone-section-label { display: flex; justify-content: space-between; align-items: center; margin: 0 11px 6px; }
+.phone-section-label strong { font-size: 8px; font-weight: 1000; }
+.phone-section-label span { color: var(--tanda-coral); font-size: 6px; font-weight: 900; }
+.phone-listing { display: flex; align-items: center; gap: 6px; margin: 0 9px 6px; padding: 5px; border: 1px solid #f0e8e6; border-radius: 9px; background: #fff; }
+.listing-thumb { display: grid; flex: none; place-items: center; width: 34px; height: 36px; border-radius: 7px; color: #745c65; }
+.thumb-cafe { background: linear-gradient(140deg, #f3d4c7, #f1e5ca); }
+.thumb-bakery { background: linear-gradient(140deg, #f2e1b9, #f5d4cf); }
+.listing-copy { display: flex; flex: 1; flex-direction: column; gap: 2px; min-width: 0; }
+.listing-copy strong { overflow: hidden; font-size: 6px; font-weight: 1000; text-overflow: ellipsis; white-space: nowrap; }
+.listing-copy small { color: #857a81; font-size: 5px; font-weight: 700; }
+.listing-chevron { display: grid; place-items: center; color: var(--tanda-coral); }
+.phone-tabbar { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-around; padding: 8px 4px 9px; border-top: 1px solid #f0e7e6; color: #857a81; background: #fffdfc; }
+.phone-tabbar span { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 5px; font-weight: 800; }
+.phone-tabbar .tab-active { color: var(--tanda-coral); }
+.phone-back .phone-screen { background: #fdf7f3; }
+.phone-photo { height: 50%; margin: 15px 7px 0; border-radius: 17px; background: linear-gradient(0deg, rgba(37, 27, 25, .2), transparent 40%), url('/images/tanda-cafe-editorial.jpg') center 56% / cover; }
+.photo-tag { display: inline-flex; margin: 10px; padding: 5px 7px; border-radius: 10px; color: #453a3d; background: rgba(255,249,247,.91); font-size: 6px; font-weight: 900; }
+.phone-back-copy { display: grid; grid-template-columns: 1fr auto; gap: 4px; padding: 10px 11px 0; }
+.phone-back-copy strong { grid-column: 1; font-size: 9px; font-weight: 1000; }
+.phone-label { grid-column: 1; color: #81777e; font-size: 6px; font-weight: 800; }
+.mock-badge { grid-column: 2; grid-row: 1 / 3; align-self: center; padding: 5px 7px; border-radius: 9px; color: #743e39; background: #f9d9cc; font-size: 6px; font-weight: 1000; }
+.mock-disclaimer-mini { margin: 8px 10px; color: #82777e; font-size: 5px; font-weight: 800; }
+.phone-caption { position: absolute; right: 0; bottom: -2px; display: flex; align-items: center; gap: 6px; max-width: 255px; color: #70656c; font-size: 8px; font-weight: 800; text-align: right; }
+.caption-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: #aaa0a6; }
+.phone-sticker { position: absolute; z-index: 4; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 12px rgba(55,39,48,.12); font-weight: 1000; }
+.sticker-offer { width: 76px; height: 67px; padding: 6px; color: #282529; background: #ff9b7e; clip-path: polygon(50% 0,61% 13%,78% 5%,82% 23%,100% 29%,89% 45%,100% 60%,81% 66%,83% 87%,63% 83%,50% 100%,38% 84%,17% 94%,17% 72%,0 63%,12% 46%,2% 30%,22% 25%,24% 6%,42% 14%); font-size: 13px; line-height: 1.05; text-align: center; transform: rotate(-9deg); }
+.sticker-offer-a { top: 25%; left: 0; }
+.sticker-offer-b { top: 5%; right: 3%; background: #f6d56b; transform: rotate(8deg); }
+.sticker-category { min-height: 35px; gap: 7px; padding: 0 12px; border: 1px solid rgba(41,37,42,.14); border-radius: 999px; color: #312c32; background: #fff9f7; font-size: 11px; white-space: nowrap; }
+.sticker-category svg { color: var(--tanda-coral); }
+.sticker-food { top: 33%; right: -6%; background: #ffdb91; }
+.sticker-fashion { top: 46%; right: -8%; background: #f4c8e5; }
+.sticker-coffee { top: 59%; right: -4%; background: #f8dfa7; }
+.coffee-cup-icon { display: inline-grid; width: 15px; height: 15px; place-items: center; border: 1.5px solid var(--tanda-coral); border-radius: 4px 4px 6px 6px; color: var(--tanda-coral); font: 900 8px/1 'Nunito', sans-serif; }
+
+.panorama-section { position: relative; z-index: 5; margin-top: -69px; padding: 0 25px; }
+.panorama-frame { position: relative; width: min(1100px, 100%); margin: auto; padding-bottom: 19px; }
+.panorama-frame .reference-panorama { width: 100%; }
+.panorama-frame .motion-panorama-svg { display: block; width: 100%; height: auto; aspect-ratio: 3 / 1; }
+.panorama-frame .panorama-motion-toggle { right: -1px; bottom: 0; }
+.panorama-caption { position: absolute; right: 51px; bottom: 10px; color: #756b71; font-size: 8px; font-weight: 800; }
+
+.perks-section { padding: 1px 0 24px; }
+.perks-inner, .how-inner { width: min(1000px, calc(100% - 64px)); margin: auto; }
+.section-heading { position: relative; margin-bottom: 16px; text-align: center; }
+.section-index { display: none; }
+.section-heading h2 { margin: 0; font-size: clamp(1.55rem, 3vw, 2rem); font-weight: 1000; letter-spacing: -.06em; }
+.section-heading p { margin: 5px 0 0; color: #776d73; font-size: 11px; font-weight: 700; }
+.perks-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.perk-card {
+  position: relative; display: flex; align-items: center; min-height: 98px; gap: 12px; padding: 14px 17px;
+  border-radius: 18px; transition: transform .25s ease;
+}
+.perk-card:hover { transform: translateY(-4px); }
+.perk-0 { background: #eee8f8; }
+.perk-1 { background: #fcebdc; }
+.perk-2 { background: #f9e1e2; }
+.perk-icon { display: grid; flex: 0 0 47px; place-items: center; width: 47px; height: 47px; color: var(--tanda-coral); }
+.perk-icon svg { width: 34px; height: 34px; stroke-width: 1.8; }
+.perk-number { display: none; }
+.perk-copy { padding-left: 12px; border-left: 1px solid rgba(41,37,42,.2); }
+.perk-copy h3 { margin: 0 0 3px; font-size: 18px; font-weight: 1000; letter-spacing: -.04em; }
+.perk-copy p { margin: 0; color: #615960; font-size: 10px; font-weight: 750; line-height: 1.45; }
+
+.brand-strip { padding: 10px 0 28px; }
+.brand-strip-inner { width: min(1000px, calc(100% - 64px)); margin: auto; text-align: center; }
+.brand-strip h2 { margin: 0 0 14px; font-size: clamp(1.35rem, 2.5vw, 1.7rem); font-weight: 1000; letter-spacing: -.055em; }
+.brand-names { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 9px; }
+.brand-wordmark {
+  display: grid; min-height: 58px; place-items: center; padding: 7px 5px; border: 1px solid rgba(41,37,42,.045);
+  border-radius: 12px; color: #3e383d; background: rgba(255,255,255,.8); box-shadow: 0 4px 12px rgba(65,48,54,.045);
+  font-size: 12px; font-weight: 1000; line-height: 1;
+}
+.brand-script { color: #9b273b; font-family: Georgia, serif; font-size: 14px; font-style: italic; }
+.brand-circle { width: 42px; min-height: 42px; margin: auto; border-radius: 50%; color: #342e21; background: #f6d328; font-size: 13px; }
+.brand-serif { font-family: Georgia, serif; font-size: 12px; font-weight: 700; }
+.brand-italic { color: #719138; font-size: 15px; font-style: italic; }
+.brand-bold { font-size: 16px; letter-spacing: -.08em; }
+.brand-cinema { color: #204486; font-size: 8px; letter-spacing: .02em; }
+.brand-rappi { color: #ea4a40; font-size: 17px; font-style: italic; }
+.brand-strip-inner > p { max-width: 780px; margin: 11px auto 0; color: #776d73; font-size: 9px; font-weight: 750; line-height: 1.5; }
+.brand-disclaimer strong { display: block; width: fit-content; margin: 0 auto 5px; padding: 4px 9px; border-radius: 999px; color: #7d3c35; background: #f9e1dc; font-size: 8px; letter-spacing: .025em; }
+
+.how-section { padding: 33px 0 32px; background: #fbf0e8; }
+.how-inner { display: grid; grid-template-columns: 1fr; gap: 12px; align-items: start; }
+.how-heading { padding-top: 0; text-align: center; }
+.how-heading .tanda-eyebrow { margin-bottom: 10px; }
+.how-heading .tanda-eyebrow { justify-content: center; }
+.how-heading h2 { max-width: none; margin: 0; font-size: clamp(1.7rem, 3vw, 2.25rem); font-weight: 1000; line-height: 1.05; letter-spacing: -.065em; }
+.how-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 25px; border-top: 0; }
+.how-step { position: relative; display: grid; grid-template-columns: 31px minmax(0,1fr); gap: 10px; align-items: start; min-height: 96px; padding: 13px 15px; border: 1px solid rgba(41,37,42,.12); border-radius: 13px; background: rgba(255,249,247,.68); }
+.how-number { padding-top: 3px; color: var(--tanda-coral); font-size: 10px; font-weight: 1000; }
+.how-step h3 { margin: 0 0 3px; font-size: 14px; font-weight: 1000; letter-spacing: -.035em; }
+.how-step p { max-width: 430px; margin: 0; color: #71676d; font-size: 10px; font-weight: 700; line-height: 1.5; }
+.how-arrow { position: absolute; top: 50%; right: -27px; color: var(--tanda-coral); transform: translateY(-50%); }
+.how-step:last-child .how-arrow { display: none; }
+.honesty-note { grid-column: 1; display: flex; align-items: flex-start; gap: 8px; margin: 0 auto; color: #756b71; font-size: 9px; font-weight: 800; line-height: 1.5; text-align: center; }
+.honesty-note span { flex: none; width: 7px; height: 7px; margin-top: 4px; border-radius: 50%; background: var(--tanda-coral); }
+
+.tanda-footer { padding: 19px max(32px, calc((100% - 1100px)/2)) 13px; background: #fff4f0; }
+.footer-main { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 13px; border-bottom: 1px solid var(--tanda-line); }
+.tanda-brand-footer .tanda-logo-fallback { font-size: 22px; }
+.tanda-brand-footer .tanda-logo-slot { min-width: 68px; min-height: 27px; }
+.tanda-brand-footer .tanda-logo-spark { right: 4px; width: 11px; }
+.footer-main p, .footer-main > span { margin: 0; color: #766c72; font-size: 9px; font-weight: 800; }
+.footer-main > span { text-align: right; }
+.footer-bottom { display: flex; justify-content: space-between; padding-top: 10px; color: #8b8086; font-size: 8px; font-weight: 900; letter-spacing: .1em; }
+.footer-bottom a { color: inherit; text-decoration: none; }
+.footer-bottom .footer-admin-link { opacity: .78; transition: opacity .18s ease; }
+.footer-bottom .footer-admin-link:hover { opacity: 1; color: var(--tanda-coral); }
+.tanda-dialog-backdrop { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(36, 29, 34, .55); backdrop-filter: blur(5px); }
+.tanda-dialog { position: relative; width: min(430px, 100%); padding: 36px; border: 1px solid #f1dfdc; border-radius: 24px; background: #fff9f7; box-shadow: 0 22px 65px rgba(36, 29, 34, .2); animation: tanda-dialog-in .22s ease-out both; }
+.dialog-close { position: absolute; top: 15px; right: 15px; display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid var(--tanda-line); border-radius: 50%; color: var(--tanda-ink); background: transparent; cursor: pointer; }
+.dialog-status { display: inline-flex; align-items: center; gap: 7px; color: #776d73; font-size: 8px; font-weight: 1000; letter-spacing: .12em; }
+.dialog-status > span { width: 7px; height: 7px; border-radius: 50%; background: var(--tanda-coral); }
+.tanda-dialog h2 { margin: 18px 0 9px; font-size: 31px; font-weight: 1000; line-height: 1.03; letter-spacing: -.06em; }
+.tanda-dialog p { margin: 0 0 23px; color: #71676d; font-size: 13px; font-weight: 700; line-height: 1.65; }
+.tanda-page :focus-visible { outline: 3px solid rgba(244,81,59,.72); outline-offset: 3px; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: minmax(300px, .95fr) minmax(320px, 1.05fr); width: calc(100% - 48px); gap: 4px; }
+  .hero-copy h1 { font-size: clamp(3rem, 7vw, 4.6rem); }
+  .phone-front { left: 13%; }
+  .phone-back { right: 3%; }
+  .phone-stage { transform: scale(.94); }
+  .perks-inner, .how-inner, .brand-strip-inner { width: calc(100% - 48px); }
+  .perk-card { gap: 7px; padding-inline: 10px; }
+  .perk-icon { flex-basis: 41px; }
+  .perk-copy { padding-left: 8px; }
+  .brand-names { gap: 6px; }
+}
+@media (max-width: 700px) {
+  .tanda-header { height: 58px; }
+  .tanda-header-inner { width: calc(100% - 36px); }
+  .tanda-logo-fallback { font-size: 28px; }
+  .tanda-logo-slot { min-width: 80px; }
+  .tanda-nav, .header-download { display: none; }
+  .tanda-header-actions { gap: 8px; }
+  .tanda-menu-toggle { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--tanda-line); border-radius: 50%; color: var(--tanda-ink); background: transparent; }
+  .tanda-menu-toggle svg { width: 18px; }
+  .tanda-mobile-nav { position: absolute; top: 58px; right: 0; left: 0; display: flex; flex-direction: column; padding: 7px 22px 17px; border-bottom: 1px solid var(--tanda-line); background: var(--tanda-paper); box-shadow: 0 12px 26px rgba(51,39,46,.08); }
+  .tanda-mobile-nav a { padding: 13px 0; border-bottom: 1px solid var(--tanda-line); font-size: 13px; }
+  .tanda-mobile-nav .tanda-button { align-self: flex-start; margin-top: 13px; }
+  .tanda-hero { padding-top: 5px; }
+  .hero-inner { grid-template-columns: 1fr; width: calc(100% - 40px); min-height: auto; gap: 0; }
+  .hero-copy { padding: 26px 0 0; text-align: center; }
+  .hero-copy .tanda-eyebrow { justify-content: center; margin-bottom: 13px; font-size: 8px; }
+  .hero-copy h1 { font-size: clamp(3.25rem, 12vw, 4.9rem); }
+  .hero-intro { max-width: 410px; margin: 16px auto 16px; font-size: 12px; }
+  .hero-buttons { justify-content: center; gap: 8px; }
+  .tanda-button { min-height: 41px; padding-inline: 15px; font-size: 10px; }
+  .hero-location { justify-content: center; margin-top: 14px; font-size: 9px; }
+  .phone-stage { min-height: 344px; margin-top: 2px; transform: scale(.87); transform-origin: center top; }
+  .phone-front { left: 19%; width: 190px; height: 343px; }
+  .phone-back { right: 10%; width: 170px; height: 308px; }
+  .phone-caption { right: 0; bottom: -4px; max-width: 240px; font-size: 7px; }
+  .sticker-offer { width: 61px; height: 55px; font-size: 10px; }
+  .sticker-offer-a { left: 1%; top: 29%; }
+  .sticker-offer-b { right: 5%; top: 8%; }
+  .sticker-category { min-height: 29px; gap: 5px; padding: 0 8px; font-size: 9px; }
+  .sticker-category svg { width: 12px; height: 12px; }
+  .sticker-food { top: 39%; right: -1%; }
+  .sticker-fashion { top: 52%; right: -1%; }
+  .sticker-coffee { top: 65%; right: 1%; }
+  .panorama-section { margin-top: -39px; padding: 0 8px; }
+  .panorama-frame { padding-bottom: 23px; }
+  .panorama-frame .motion-panorama-svg { min-height: 118px; object-fit: contain; }
+  .panorama-caption { right: 48px; bottom: 3px; left: 8px; font-size: 6px; text-align: right; }
+  .perks-section { padding: 10px 0 25px; }
+  .perks-inner, .how-inner, .brand-strip-inner { width: calc(100% - 38px); }
+  .section-heading { margin-bottom: 14px; }
+  .section-heading h2 { font-size: 1.55rem; }
+  .section-heading p { font-size: 9px; }
+  .perks-grid { grid-template-columns: 1fr; gap: 8px; }
+  .perk-card { min-height: 78px; padding: 10px 15px; gap: 10px; border-radius: 14px 22px 14px 22px; }
+  .perk-icon { flex-basis: 43px; width: 43px; height: 43px; }
+  .perk-icon svg { width: 31px; height: 31px; }
+  .perk-copy { padding-left: 11px; }
+  .perk-copy h3 { font-size: 15px; }
+  .perk-copy p { font-size: 9px; }
+  .brand-strip { padding: 11px 0 29px; }
+  .brand-strip h2 { margin-bottom: 12px; font-size: 1.3rem; }
+  .brand-names { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+  .brand-wordmark { min-height: 46px; font-size: 10px; }
+  .brand-circle { width: 37px; min-height: 37px; }
+  .brand-strip-inner > p { margin-top: 9px; font-size: 8px; }
+  .how-section { padding: 34px 0 32px; }
+  .how-inner { grid-template-columns: 1fr; gap: 14px; }
+  .how-heading h2 { max-width: 330px; margin: auto; font-size: 2.25rem; }
+  .how-heading .tanda-eyebrow { margin-bottom: 7px; }
+  .how-steps { grid-template-columns: 1fr; gap: 9px; }
+  .how-step { grid-template-columns: 29px 1fr; gap: 9px; min-height: 0; padding: 12px; }
+  .how-step h3 { font-size: 13px; }
+  .how-step p { font-size: 9px; }
+  .how-arrow { top: auto; right: 13px; bottom: -16px; z-index: 2; transform: rotate(90deg); }
+  .how-step:last-child .how-arrow { display: none; }
+  .honesty-note { grid-column: 1; margin-top: 0; font-size: 8px; }
+  .tanda-footer { padding: 20px 20px 13px; }
+  .footer-main { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+  .footer-main .tanda-brand { grid-row: span 2; align-self: center; }
+  .footer-main p, .footer-main > span { font-size: 8px; }
+  .footer-main > span { text-align: left; line-height: 1.45; }
+  .footer-bottom { font-size: 7px; }
+  .tanda-dialog { padding: 32px 25px 25px; border-radius: 20px; }
+  .tanda-dialog h2 { font-size: 27px; }
+}
+@media (max-width: 380px) {
+  .hero-copy h1 { font-size: 3.05rem; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .phone-stage { min-height: 314px; transform: scale(.79); transform-origin: center top; }
+  .phone-front { left: 16%; }
+  .phone-back { right: 4%; }
+  .panorama-caption { font-size: 5px; }
+  .brand-names { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy { animation: tanda-rise .65s cubic-bezier(.18,.78,.27,1) both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tanda-page *, .tanda-page *::before, .tanda-page *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+@keyframes tanda-rise { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes tanda-dialog-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes tanda-mark-sparkle { 0%, 100% { opacity: .7; transform: scale(.94) rotate(-3deg); } 50% { opacity: 1; transform: scale(1.08) rotate(3deg); } }
