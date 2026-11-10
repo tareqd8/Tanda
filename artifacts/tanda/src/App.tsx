@@ -25,15 +25,15 @@ if (!clerkPubKey) {
 const clerkAppearance = {
   theme: 'simple' as const,
   variables: {
-    colorPrimary: '#f4513b',
-    colorForeground: '#282529',
-    colorMutedForeground: '#746b70',
-    colorBackground: '#fffaf7',
-    colorInput: '#fffdfc',
-    colorInputForeground: '#282529',
+    colorPrimary: '#d02f2b',
+    colorForeground: '#342a24',
+    colorMutedForeground: '#6f625c',
+    colorBackground: '#fffaf5',
+    colorInput: '#ffffff',
+    colorInputForeground: '#342a24',
     colorDanger: '#b42318',
-    colorNeutral: '#282529',
-    fontFamily: 'Nunito, sans-serif',
+    colorNeutral: '#342a24',
+    fontFamily: 'DM Sans, sans-serif',
     borderRadius: '1rem',
   },
 };

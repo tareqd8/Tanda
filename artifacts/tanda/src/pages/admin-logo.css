@@ -1,15 +1,15 @@
 .logo-admin-page {
-  --logo-ink: #282529;
-  --logo-muted: #746b70;
-  --logo-paper: #fffaf7;
-  --logo-coral: #f4513b;
+  --logo-ink: hsl(var(--foreground));
+  --logo-muted: hsl(var(--muted-foreground));
+  --logo-paper: hsl(var(--background));
+  --logo-coral: hsl(var(--primary));
   min-height: 100dvh;
   color: var(--logo-ink);
   background:
-    radial-gradient(ellipse at 83% 9%, rgba(238, 234, 248, .82), transparent 28rem),
-    radial-gradient(ellipse at 3% 38%, rgba(251, 227, 222, .64), transparent 30rem),
-    #fffaf7;
-  font-family: 'Nunito', sans-serif;
+    radial-gradient(ellipse at 83% 9%, hsl(var(--accent) / .82), transparent 28rem),
+    radial-gradient(ellipse at 3% 38%, hsl(var(--secondary) / .64), transparent 30rem),
+    var(--logo-paper);
+  font-family: var(--app-font-sans);
 }
 .logo-admin-header {
   position: sticky;
@@ -45,7 +45,7 @@
   border: 0;
   background: transparent;
   color: var(--logo-ink);
-  font: 800 12px 'Nunito', sans-serif;
+  font: 800 12px var(--app-font-sans);
   text-decoration: none;
 }
 .logo-admin-language {
@@ -97,7 +97,7 @@
   padding: 17px;
   border: 1px solid rgba(40, 37, 41, .08);
   border-radius: 14px;
-  background: #fffaf7;
+  background: var(--logo-paper);
 }
 .logo-admin-preview-mark {
   display: grid;
@@ -140,7 +140,7 @@
   gap: 4px;
   border: 1.5px dashed rgba(40, 37, 41, .23);
   border-radius: 14px;
-  background: #fffdfc;
+  background: hsl(var(--card));
   cursor: pointer;
   transition: border-color .18s, background-color .18s, transform .18s;
 }
@@ -163,12 +163,12 @@
   padding: 0 16px;
   border: 1px solid transparent;
   border-radius: 999px;
-  font: 900 12px 'Nunito', sans-serif;
+  font: 900 12px var(--app-font-sans);
   transition: transform .16s, background-color .16s, box-shadow .16s;
 }
 .logo-admin-button:not(:disabled):hover { transform: translateY(-1px); }
 .logo-admin-button:disabled { cursor: not-allowed; opacity: .55; }
-.logo-admin-button-primary { background: var(--logo-coral); color: #fff; box-shadow: 0 6px 14px rgba(244, 81, 59, .18); }
+.logo-admin-button-primary { background: var(--logo-coral); color: hsl(var(--primary-foreground)); box-shadow: 0 6px 14px hsl(var(--primary) / .18); }
 .logo-admin-button-danger { border-color: #efd5d0; background: #fff; color: #bd3b2a; }
 .logo-admin-button-quiet { background: transparent; color: var(--logo-muted); }
 .logo-admin-confirm { margin-top: 16px; padding: 14px; border-radius: 12px; background: #fff1ec; }
@@ -194,7 +194,7 @@
   background:
     radial-gradient(ellipse at 18% 18%, rgba(238, 234, 248, .9), transparent 26rem),
     radial-gradient(ellipse at 84% 79%, rgba(251, 227, 222, .86), transparent 27rem),
-    #fffaf7;
+    var(--logo-paper);
 }
 .tanda-auth-brand {
   position: absolute;

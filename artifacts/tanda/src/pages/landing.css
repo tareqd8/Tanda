@@ -1,16 +1,16 @@
 .tanda-page {
-  --tanda-ink: #29252a;
-  --tanda-muted: #6f676d;
-  --tanda-coral: #f4513b;
-  --tanda-paper: #fff9f7;
-  --tanda-line: #eadfdf;
+  --tanda-ink: hsl(var(--foreground));
+  --tanda-muted: hsl(var(--muted-foreground));
+  --tanda-coral: hsl(var(--primary));
+  --tanda-paper: hsl(var(--background));
+  --tanda-line: hsl(var(--border));
   min-height: 100dvh;
   overflow: clip;
   color: var(--tanda-ink);
   background:
-    radial-gradient(ellipse at 82% 14%, rgba(255, 225, 227, .7), transparent 31rem),
-    #fff9f7;
-  font-family: 'Nunito', sans-serif;
+    radial-gradient(ellipse at 82% 14%, hsl(var(--accent) / .7), transparent 31rem),
+    var(--tanda-paper);
+  font-family: var(--app-font-sans);
 }
 .tanda-page *, .tanda-page *::before, .tanda-page *::after { box-sizing: border-box; }
 .tanda-page a { color: inherit; }
@@ -19,8 +19,8 @@
   z-index: 20;
   top: 0;
   height: 62px;
-  background: rgba(255, 249, 247, .94);
-  border-bottom: 1px solid rgba(234, 223, 223, .7);
+  background: hsl(var(--background) / .94);
+  border-bottom: 1px solid hsl(var(--border) / .7);
   backdrop-filter: blur(18px);
 }
 .tanda-header-inner {
@@ -45,7 +45,7 @@
 .tanda-stored-logo { display: block; width: 100%; max-width: 100px; max-height: 40px; object-fit: contain; object-position: left center; }
 .tanda-nav { display: flex; align-items: center; gap: clamp(24px, 4vw, 54px); }
 .tanda-nav a, .tanda-mobile-nav a {
-  position: relative; color: #514950; font-size: 13px; font-weight: 800; text-decoration: none;
+  position: relative; color: var(--tanda-ink); font-size: 13px; font-weight: 800; text-decoration: none;
 }
 .tanda-nav a::after {
   position: absolute; right: 100%; bottom: -7px; left: 0; height: 2px;
@@ -61,12 +61,12 @@
 .tanda-button {
   display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px;
   padding: 0 19px; border: 1px solid transparent; border-radius: 999px;
-  font: 900 13px/1 'Nunito', sans-serif; text-decoration: none; cursor: pointer;
+  font: 900 13px/1 var(--app-font-sans); text-decoration: none; cursor: pointer;
   transition: transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 .tanda-button:hover { transform: translateY(-2px); }
-.button-coral { color: #fff9f7; background: var(--tanda-coral); box-shadow: 0 5px 13px -8px rgba(244,81,59,.8); }
-.button-coral:hover { background: #df402e; box-shadow: 0 8px 17px -9px rgba(244,81,59,.7); }
+.button-coral { color: var(--tanda-paper); background: var(--tanda-coral); box-shadow: 0 5px 13px -8px hsl(var(--primary) / .8); }
+.button-coral:hover { background: #b92825; box-shadow: 0 8px 17px -9px hsl(var(--primary) / .7); }
 .tanda-page .header-download { min-height: 35px; padding-inline: 15px; font-size: 11px; }
 .button-quiet { border-color: #837a80; color: var(--tanda-ink); background: rgba(255,255,255,.55); }
 .button-quiet:hover { border-color: var(--tanda-coral); }
@@ -81,7 +81,7 @@
 .hero-copy { z-index: 1; padding: 14px 0 31px 2px; }
 .tanda-eyebrow {
   display: flex; align-items: center; gap: 9px; margin: 0 0 15px;
-  color: #776d73; font-size: 9px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tanda-muted); font-size: 9px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
 }
 .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tanda-coral); }
 .hero-copy h1 {
@@ -93,9 +93,9 @@
   position: absolute; z-index: -1; inset: .04em -.08em -.03em -.09em; border-radius: .12em .2em .14em .2em;
   background: var(--tanda-coral); content: ''; transform: rotate(-1deg);
 }
-.hero-intro { max-width: 420px; margin: 18px 0 19px; color: #655d63; font-size: 14px; font-weight: 700; line-height: 1.6; }
+.hero-intro { max-width: 420px; margin: 18px 0 19px; color: var(--tanda-muted); font-size: 14px; font-weight: 700; line-height: 1.6; }
 .hero-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
-.hero-location { display: flex; align-items: center; gap: 7px; margin-top: 19px; color: #776d73; font-size: 10px; font-weight: 800; }
+.hero-location { display: flex; align-items: center; gap: 7px; margin-top: 19px; color: var(--tanda-muted); font-size: 10px; font-weight: 800; }
 .hero-location svg { color: var(--tanda-coral); }
 .phone-stage {
   position: relative; display: flex; align-items: center; justify-content: center;
@@ -116,7 +116,7 @@
 .phone-back { z-index: 1; right: 9%; width: 181px; height: 327px; transform: rotate(8deg) translateY(18px); }
 .phone-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 26px; background: #fffaf7; }
 .phone-speaker { position: absolute; z-index: 3; top: 7px; left: 50%; width: 54px; height: 12px; border-radius: 12px; background: #302a30; transform: translateX(-50%); }
-.phone-status { display: flex; justify-content: space-between; padding: 10px 13px 0; color: #423b42; font: 800 7px/1 'Nunito', sans-serif; }
+  .phone-status { display: flex; justify-content: space-between; padding: 10px 13px 0; color: #423b42; font: 800 7px/1 var(--app-font-sans); }
 .phone-wordmark { margin: 12px 12px 10px; color: var(--tanda-ink); font-size: 17px; font-weight: 1000; line-height: 1; letter-spacing: -.08em; }
 .phone-wordmark span { color: var(--tanda-coral); }
 .phone-front .phone-screen h3 { margin: 0 12px 2px; font-size: 14px; font-weight: 1000; letter-spacing: -.04em; }
@@ -156,7 +156,7 @@
 .sticker-food { top: 33%; right: -6%; background: #ffdb91; }
 .sticker-fashion { top: 46%; right: -8%; background: #f4c8e5; }
 .sticker-coffee { top: 59%; right: -4%; background: #f8dfa7; }
-.coffee-cup-icon { display: inline-grid; width: 15px; height: 15px; place-items: center; border: 1.5px solid var(--tanda-coral); border-radius: 4px 4px 6px 6px; color: var(--tanda-coral); font: 900 8px/1 'Nunito', sans-serif; }
+.coffee-cup-icon { display: inline-grid; width: 15px; height: 15px; place-items: center; border: 1.5px solid var(--tanda-coral); border-radius: 4px 4px 6px 6px; color: var(--tanda-coral); font: 900 8px/1 var(--app-font-sans); }
 
 .panorama-section { position: relative; z-index: 5; margin-top: -69px; padding: 0 25px; }
 .panorama-frame { position: relative; width: min(1100px, 100%); margin: auto; padding-bottom: 19px; }
@@ -206,7 +206,7 @@
 .brand-strip-inner > p { max-width: 780px; margin: 11px auto 0; color: #776d73; font-size: 9px; font-weight: 750; line-height: 1.5; }
 .brand-disclaimer strong { display: block; width: fit-content; margin: 0 auto 5px; padding: 4px 9px; border-radius: 999px; color: #7d3c35; background: #f9e1dc; font-size: 8px; letter-spacing: .025em; }
 
-.how-section { padding: 33px 0 32px; background: #fbf0e8; }
+.how-section { padding: 33px 0 32px; background: hsl(var(--warm-surface)); }
 .how-inner { display: grid; grid-template-columns: 1fr; gap: 12px; align-items: start; }
 .how-heading { padding-top: 0; text-align: center; }
 .how-heading .tanda-eyebrow { margin-bottom: 10px; }
@@ -222,7 +222,7 @@
 .honesty-note { grid-column: 1; display: flex; align-items: flex-start; gap: 8px; margin: 0 auto; color: #756b71; font-size: 9px; font-weight: 800; line-height: 1.5; text-align: center; }
 .honesty-note span { flex: none; width: 7px; height: 7px; margin-top: 4px; border-radius: 50%; background: var(--tanda-coral); }
 
-.tanda-footer { padding: 19px max(32px, calc((100% - 1100px)/2)) 13px; background: #fff4f0; }
+.tanda-footer { padding: 19px max(32px, calc((100% - 1100px)/2)) 13px; background: hsl(var(--secondary)); }
 .footer-main { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 13px; border-bottom: 1px solid var(--tanda-line); }
 .tanda-brand-footer .tanda-logo-fallback { font-size: 22px; }
 .tanda-brand-footer .tanda-logo-slot { min-width: 68px; min-height: 27px; }
@@ -240,7 +240,7 @@
 .dialog-status > span { width: 7px; height: 7px; border-radius: 50%; background: var(--tanda-coral); }
 .tanda-dialog h2 { margin: 18px 0 9px; font-size: 31px; font-weight: 1000; line-height: 1.03; letter-spacing: -.06em; }
 .tanda-dialog p { margin: 0 0 23px; color: #71676d; font-size: 13px; font-weight: 700; line-height: 1.65; }
-.tanda-page :focus-visible { outline: 3px solid rgba(244,81,59,.72); outline-offset: 3px; }
+.tanda-page :focus-visible { outline: 3px solid hsl(var(--primary) / .72); outline-offset: 3px; }
 
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: minmax(300px, .95fr) minmax(320px, 1.05fr); width: calc(100% - 48px); gap: 4px; }
