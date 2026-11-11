@@ -19,7 +19,7 @@
    and scales uniformly with the viewport (1u = 1px at 1024 wide). */
 @media (min-width: 760px) {
   .tanda-page {
-    --u: calc(min(100vw, 1760px) / 1024);
+    --u: clamp(.85px, min(calc(100vw / 1024), calc(100svh / 800)), 1.25px);
     background:
       radial-gradient(ellipse 40% 30% at 0 20%, #f3dcf6, transparent 70%),
       radial-gradient(ellipse 45% 35% at 100% 15%, #ffe0ea, transparent 70%),
@@ -73,8 +73,8 @@
   .tanda-page .phone-stage::before { display: none; }
   .tanda-page .phone { border-width: calc(5 * var(--u)); border-color: #2d2a33; border-radius: calc(26 * var(--u)); box-shadow: 0 0 0 calc(1.5 * var(--u)) #c9bfd0, calc(6 * var(--u)) calc(12 * var(--u)) calc(22 * var(--u)) #4a2e4430; }
   .tanda-page .phone-screen { border-radius: calc(21 * var(--u)); }
-  .tanda-page .phone-front { z-index: 3; left: calc(108 * var(--u)); top: calc(8 * var(--u)); width: calc(168 * var(--u)); height: calc(318 * var(--u)); transform: rotate(-4deg) scale(.8); transform-origin: top center; }
-  .tanda-page .phone-back { z-index: 2; left: calc(255 * var(--u)); right: auto; top: calc(24 * var(--u)); width: calc(156 * var(--u)); height: calc(294 * var(--u)); transform: rotate(10deg) scale(.8); transform-origin: top center; }
+  .tanda-page .phone-front { z-index: 3; left: calc(108 * var(--u)); top: calc(54 * var(--u)); width: calc(168 * var(--u)); height: calc(318 * var(--u)); transform: rotate(-6deg) scale(.8); transform-origin: top center; }
+  .tanda-page .phone-back { z-index: 2; left: calc(250 * var(--u)); right: auto; top: calc(76 * var(--u)); width: calc(156 * var(--u)); height: calc(294 * var(--u)); transform: rotate(8deg) scale(.8); transform-origin: top center; }
   .tanda-page .phone-speaker { top: calc(4 * var(--u)); width: calc(46 * var(--u)); height: calc(11 * var(--u)); border-radius: calc(8 * var(--u)); }
   .tanda-page .phone-status { padding: calc(6 * var(--u)) calc(14 * var(--u)) 0; font-size: calc(6 * var(--u)); }
   .tanda-page .phone-wordmark { margin: calc(9 * var(--u)) 0 calc(7 * var(--u)); font-size: calc(17 * var(--u)); }

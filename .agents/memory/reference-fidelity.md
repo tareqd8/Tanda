@@ -18,13 +18,13 @@ Preserve the reference's relative scale on wider desktop windows, not just at th
 
 **Why:** The user rejected a comparison where capped content widths, type and mockups made the real page look miniature despite a closer narrow-screen rendering.
 
-**How to apply:** Compare both the reference-width composition and a wider desktop viewport. Scale related typography, mockups, artwork and section spacing together rather than independently capping them.
+**How to apply:** Compare both the reference-width composition and a wider desktop viewport. Scale related typography, mockups, artwork and section spacing together rather than independently capping them. Constrain the whole composition by available height as well as width so wide, short windows do not become oversized.
 
 The phone mockups must leave the woman/cyclist and the background church visible.
 
-**Why:** The user explicitly rejected oversized phones covering those parts of the illustration.
+**Why:** The user explicitly rejected oversized phones covering those parts of the illustration, then rejected floating phones with empty space underneath.
 
-**How to apply:** Preserve clear space around those foreground characters and landmarks when resizing or repositioning the phone pair.
+**How to apply:** Preserve clear space around those foreground characters and landmarks, while grounding the phone pair near the illustrated baseline instead of leaving a large empty area below it.
 
 Treat screenshot crops as references, not final production artwork. Use deliberately authored vector artwork or a genuinely high-resolution original before adding motion. Do not auto-trace the screenshot.
 

@@ -53,6 +53,7 @@ export default function ReferencePanorama({ en }: { en: boolean }) {
       <path d="M565 326Q645 292 710 330T852 319V400H565Z" fill="#f4d9e7" />
       <path d="M580 379Q650 337 724 365T852 367V400H580Z" fill="#ffe3bf" />
       <path d="M570 388Q650 371 725 391T852 388V400H570Z" fill="#eee0f1" />
+      <ellipse cx="695" cy="380" rx="126" ry="9" fill="#94738d" opacity=".12" />
       <g clipPath={`url(#${id}-hill)`}><image href={scene} x="0" y="61" width="614.4" height="614.4" /></g>
       <g mask={`url(#${id}-left)`}><g mask={`url(#${id}-left-edge-mask)`}><SceneImage /></g></g>
       <g clipPath={`url(#${id}-coast)`} mask={`url(#${id}-coast-mask)`}><g mask={`url(#${id}-coast-edge-mask)`}><image href={scene} x="204.8" y="-96" width="819.2" height="819.2" /></g></g>
