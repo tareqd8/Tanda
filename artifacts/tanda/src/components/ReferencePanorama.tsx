@@ -42,11 +42,12 @@ export default function ReferencePanorama({ en }: { en: boolean }) {
         <linearGradient id={`${id}-left-edge`} x1="580" y1="0" x2="600" y2="0" gradientUnits="userSpaceOnUse"><stop stopColor="#fff" /><stop offset="1" stopColor="#000" /></linearGradient>
         <mask id={`${id}-left-edge-mask`}><rect width="580" height="400" fill="#fff" /><rect x="580" width="20" height="400" fill={`url(#${id}-left-edge)`} /></mask>
         <clipPath id={`${id}-hill`}><path d="M0 240Q65 218 145 238V355H0Z" /></clipPath>
-        <clipPath id={`${id}-coast`}><path d="M820 225H1024V400H820Z" /></clipPath>
+        <clipPath id={`${id}-coast`}><path d="M770 225H1024V400H770Z" /></clipPath>
         <linearGradient id={`${id}-coast-fade`} x1="0" y1="225" x2="0" y2="250" gradientUnits="userSpaceOnUse"><stop stopColor="#000" /><stop offset="1" stopColor="#fff" /></linearGradient>
-        <mask id={`${id}-coast-mask`}><rect x="820" y="225" width="204" height="175" fill={`url(#${id}-coast-fade)`} /></mask>
-        <linearGradient id={`${id}-coast-edge`} x1="820" y1="0" x2="850" y2="0" gradientUnits="userSpaceOnUse"><stop stopColor="#000" /><stop offset="1" stopColor="#fff" /></linearGradient>
-        <mask id={`${id}-coast-edge-mask`}><rect x="820" width="30" height="400" fill={`url(#${id}-coast-edge)`} /><rect x="850" width="174" height="400" fill="#fff" /></mask>
+        <mask id={`${id}-coast-mask`}><rect x="770" y="225" width="254" height="175" fill={`url(#${id}-coast-fade)`} /></mask>
+        <filter id={`${id}-coast-soft-edge`} x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10" /></filter>
+        <filter id={`${id}-detail-edge`}><feGaussianBlur stdDeviation="2" /></filter>
+        <mask id={`${id}-coast-edge-mask`} x="760" y="205" width="280" height="215" maskUnits="userSpaceOnUse"><path d="M790 205Q830 260 800 305Q825 345 795 420H1040V205Z" fill="#fff" filter={`url(#${id}-coast-soft-edge)`} /><ellipse cx="810" cy="372" rx="25" ry="28" fill="#000" filter={`url(#${id}-detail-edge)`} /></mask>
         <linearGradient id={`${id}-cabin-sky`} x1="0" y1="220" x2="0" y2="300" gradientUnits="userSpaceOnUse"><stop stopColor="#f4d6e8" /><stop offset="1" stopColor="#f8c8d5" /></linearGradient>
         {cabins.map((path, i) => <clipPath id={`${id}-cabin-${i}`} key={i}><path d={path} /></clipPath>)}
       </defs>

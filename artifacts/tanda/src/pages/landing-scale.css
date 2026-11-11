@@ -67,7 +67,7 @@
   .tanda-page .panorama-frame .motion-panorama-svg { width: 100%; height: auto; aspect-ratio: 3 / 1; clip-path: none; mask-image: none; -webkit-mask-image: none; }
   .tanda-page .panorama-frame .panorama-motion-toggle { right: calc(4 * var(--u)); bottom: calc(2 * var(--u)); top: auto; width: calc(26 * var(--u)); height: calc(26 * var(--u)); }
   .tanda-page .panorama-frame .panorama-motion-toggle span { width: calc(20 * var(--u)); height: calc(20 * var(--u)); }
-  .tanda-page .panorama-caption { right: calc(34 * var(--u)); bottom: calc(4 * var(--u)); font-size: calc(6 * var(--u)); opacity: .75; }
+  .tanda-page .panorama-caption { right: calc(34 * var(--u)); bottom: calc(-10 * var(--u)); font-size: calc(7 * var(--u)); opacity: .8; }
 
   .tanda-page .phone-stage { position: absolute; z-index: 4; top: calc(8 * var(--u)); left: calc(440 * var(--u)); width: calc(560 * var(--u)); height: calc(350 * var(--u)); min-height: 0; transform: none; display: block; }
   .tanda-page .phone-stage::before { display: none; }

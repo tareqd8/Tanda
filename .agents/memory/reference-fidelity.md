@@ -26,6 +26,12 @@ The phone mockups must leave the woman/cyclist and the background church visible
 
 **How to apply:** Preserve clear space around those foreground characters and landmarks, while grounding the phone pair near the illustrated baseline instead of leaving a large empty area below it.
 
+Keep subject isolation separate from background blending when compositing the city artwork.
+
+**Why:** The raster layer sources contain complete scenes rather than isolated objects; widening a background blend can expose duplicate actors or vehicle parts.
+
+**How to apply:** Inspect joins for both seams and duplicated subjects. Soften background transitions without expanding visible foreground content indiscriminately.
+
 Treat screenshot crops as references, not final production artwork. Use deliberately authored vector artwork or a genuinely high-resolution original before adding motion. Do not auto-trace the screenshot.
 
 **Why:** The user rejected the screenshot-derived hero as blurry, then rejected automatic tracing because the faces, lettering and shapes were distorted. They explicitly asked to fix artwork before animation.
