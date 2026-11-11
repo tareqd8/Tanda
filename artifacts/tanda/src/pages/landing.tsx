@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Check, Compass, Coffee, Download, GraduationCap, MapPin, Menu, Play, Store, Tag, UsersRound, X } from 'lucide-react';
+import { ArrowRight, Check, Compass, Coffee, Download, GraduationCap, Grid2X2, Heart, MapPin, Menu, Percent, Play, Shirt, Store, Tag, UtensilsCrossed, X } from 'lucide-react';
 import { useGetBrandLogo } from '@workspace/api-client-react';
 import AnimatedPanorama from '@/components/AnimatedPanorama';
 import { Link } from 'wouter';
 import './landing.css';
+import './landing-reference.css';
 
 type Language = 'es' | 'en';
 
@@ -13,7 +14,7 @@ const copy = {
     app: 'Descarga la app',
     heroEyebrow: 'Una nueva forma de vivir Medellín',
     titleA: 'Estudia mucho.', titleB: 'Paga menos.',
-    intro: 'Tanda será una app de beneficios para estudiantes, hecha para descubrir lugares locales y disfrutar más de la ciudad.',
+    intro: 'Descuentos exclusivos para estudiantes en tus lugares favoritos de Colombia.',
     download: 'Descargar Tanda', how: 'Ver cómo funciona',
     stickerOfferA: '20% OFF', stickerOfferB: '30% OFF',
     stickerFood: 'Restaurantes', stickerFashion: 'Moda', stickerCoffee: 'Cafés',
@@ -32,16 +33,16 @@ const copy = {
     brandsTitle: 'Marcas y lugares que te van a encantar',
     brandsDisclaimer: 'Nombres mostrados solo como ejemplos ilustrativos. No representan alianzas, comercios participantes ni ofertas activas.',
     cards: [
-      ['Descubre', 'Lugares locales cerca de tu campus y tus planes.'],
-      ['Ahorra', 'Beneficios estudiantiles que estamos imaginando.'],
-      ['Comparte', 'Más planes de barrio, para hacer con tu gente.'],
+      ['Descubre', 'Encuentra descuentos en restaurantes, tiendas, servicios y más.'],
+      ['Ahorra', 'Disfruta beneficios pensados por ser estudiante.'],
+      ['Comparte', 'Invita a tus amigos y multipliquen el ahorro.'],
     ],
     howEyebrow: 'La idea, paso a paso',
-    howTitle: 'Tu ciudad, más cerca.',
+    howTitle: 'Cómo funciona',
     steps: [
-      ['01', 'Explora tu barrio', 'La app futura te ayudará a encontrar cafés, tiendas y favoritos locales.'],
-      ['02', 'Verifica tu condición', 'La verificación estudiantil se contempla para la app; este sitio no verifica estudiantes.'],
-      ['03', 'Disfruta beneficios', 'Los comercios participantes podrían ofrecer beneficios en el futuro, según sus condiciones.'],
+      ['01', 'Descarga', 'Instala Tanda en tu celular.'],
+      ['02', 'Verifica', 'Confirma que eres estudiante de una institución en Colombia.'],
+      ['03', 'Ahorra', 'Explora beneficios y disfruta de descuentos exclusivos.'],
     ],
     note: 'Tanda aún está en desarrollo. No hay ofertas activas ni comercios asociados anunciados.',
     status: 'APLICACIÓN MÓVIL EN DESARROLLO',
@@ -58,7 +59,7 @@ const copy = {
     app: 'Download the app',
     heroEyebrow: 'A new way to make Medellín yours',
     titleA: 'Study hard.', titleB: 'Pay less.',
-    intro: 'Tanda will be a student-perks app made for discovering local places and enjoying more of the city.',
+    intro: 'Exclusive student discounts at your favorite places in Colombia.',
     download: 'Download Tanda', how: 'See how it works',
     stickerOfferA: '20% OFF', stickerOfferB: '30% OFF',
     stickerFood: 'Restaurants', stickerFashion: 'Fashion', stickerCoffee: 'Cafés',
@@ -77,16 +78,16 @@ const copy = {
     brandsTitle: 'Brands and places you’ll love',
     brandsDisclaimer: 'Names shown as illustrative examples only. They do not represent partnerships, participating businesses or live offers.',
     cards: [
-      ['Discover', 'Local places around campus and your everyday plans.'],
-      ['Save', 'Student perks we are imagining for the future.'],
-      ['Share', 'More neighborhood plans to enjoy with your people.'],
+      ['Discover', 'Find discounts at restaurants, shops, services and more.'],
+      ['Save', 'Enjoy benefits designed for your student life.'],
+      ['Share', 'Invite your friends and make your savings go further.'],
     ],
     howEyebrow: 'The idea, step by step',
-    howTitle: 'Your city, a little closer.',
+    howTitle: 'How it works',
     steps: [
-      ['01', 'Explore your neighborhood', 'The future app will help you find cafés, shops and local favorites.'],
-      ['02', 'Verify student status', 'Student verification is being considered for the app; this site does not verify students.'],
-      ['03', 'Enjoy future perks', 'Participating businesses may offer future perks, subject to their terms.'],
+      ['01', 'Download', 'Install Tanda on your phone.'],
+      ['02', 'Verify', 'Confirm you study at an institution in Colombia.'],
+      ['03', 'Save', 'Explore benefits and enjoy exclusive discounts.'],
     ],
     note: 'Tanda is still in development. There are no live offers or announced business partners.',
     status: 'MOBILE APP IN DEVELOPMENT',
@@ -119,6 +120,7 @@ function Brand({ footer = false }: { footer?: boolean }) {
 }
 
 function PhonePreview({ en, text }: { en: boolean; text: Copy }) {
+  const imageBase = `${import.meta.env.BASE_URL}images/`;
   return <div className="phone-stage" aria-label={en ? 'Illustrative preview of the future Tanda app' : 'Vista ilustrativa de la futura app Tanda'}>
     <div className="phone-orbit orbit-one" aria-hidden="true" />
     <div className="phone-orbit orbit-two" aria-hidden="true" />
@@ -126,9 +128,15 @@ function PhonePreview({ en, text }: { en: boolean; text: Copy }) {
       <div className="phone-speaker" />
       <div className="phone-screen">
         <div className="phone-status"><span>9:41</span><span>● ● ●</span></div>
-        <div className="phone-photo" style={{ backgroundImage: `linear-gradient(0deg, rgba(37, 27, 25, .2), transparent 40%), url("${import.meta.env.BASE_URL}images/tanda-cafe-editorial.jpg")` }}><span className="photo-tag">{en ? 'A neighborhood pause' : 'Una pausa de barrio'}</span></div>
-        <div className="phone-back-copy"><span className="phone-label">{text.cafeType}</span><strong>{text.cafe}</strong><span className="mock-badge">{text.sampleValue}</span></div>
-        <div className="mock-disclaimer-mini">{text.samplePerk} · {en ? 'not live' : 'no activo'}</div>
+        <div className="phone-back-heading"><span>‹</span><Heart size={10} /></div>
+        <div className="app-photo-card">
+          <img src={`${imageBase}tanda-cafe-editorial.jpg`} alt="" />
+          <div><strong>{en ? 'Neighborhood café' : 'Café de barrio'}</strong><span className="app-discount">30% OFF</span><p>{en ? 'A pause, just for you' : 'Una pausa para ti'}</p></div>
+        </div>
+        <div className="app-photo-card">
+          <img src={`${imageBase}reference-assets/tanda-fashion.jpg`} alt="" />
+          <div><strong>{en ? 'Urban style' : 'Moda urbana'}</strong><span className="app-discount">20% OFF</span><p>{en ? 'Find your next favorite' : 'Encuentra tu próximo favorito'}</p></div>
+        </div>
       </div>
     </div>
     <div className="phone phone-front">
@@ -136,30 +144,49 @@ function PhonePreview({ en, text }: { en: boolean; text: Copy }) {
       <div className="phone-screen">
         <div className="phone-status"><span>9:41</span><span>● ● ●</span></div>
         <div className="phone-wordmark">tanda<span>·</span></div>
-        <h3>{text.phoneGreeting}</h3>
-        <p className="phone-subline">{text.phoneSub}</p>
-        <div className="phone-search"><Compass size={13} />{text.search}</div>
-        <div className="phone-section-label"><strong>{text.nearby}</strong><span>{text.viewAll}</span></div>
-        <div className="phone-listing">
-          <span className="listing-thumb thumb-cafe"><MapPin size={14} /></span>
-          <span className="listing-copy"><strong>{text.cafe}</strong><small>{text.cafeType}</small></span>
-          <span className="listing-chevron"><ArrowRight size={12} /></span>
+        <h3>{text.phoneGreeting}<span className="greeting-spark">✦</span></h3>
+        <p className="phone-subline">{en ? 'Discover discounts made for you.' : 'Descubre descuentos solo para ti.'}</p>
+        <div className="phone-search"><Compass size={10} />{en ? 'Search brands, places or benefits' : 'Busca marcas, lugares o beneficios'}</div>
+        <div className="app-categories">
+          {[UtensilsCrossed, Shirt, Coffee, Grid2X2].map((Icon, i) => <div key={i}><span><Icon size={15} /></span><small>{(en ? ['Food', 'Style', 'Cafés', 'More'] : ['Restaurantes', 'Moda', 'Cafés', 'Más'])[i]}</small></div>)}
         </div>
-        <div className="phone-listing">
-          <span className="listing-thumb thumb-bakery"><Compass size={14} /></span>
-          <span className="listing-copy"><strong>{text.bakery}</strong><small>{text.bakeryType}</small></span>
-          <span className="listing-chevron"><ArrowRight size={12} /></span>
+        <div className="phone-section-label"><strong>{en ? 'Offers for you' : 'Ofertas para ti'} <span>✦</span></strong><span>{en ? 'See all' : 'Ver todas'}</span></div>
+        <div className="app-food-card">
+          <div className="app-food-photo"><img src={`${imageBase}reference-assets/tanda-burger.jpg`} alt="" /><span>20% OFF</span><Heart size={12} /></div>
+          <div className="app-food-copy"><strong>{en ? 'Burgers in the park' : 'Hamburguesas El Parque'}</strong><p>{en ? 'Student benefits, delicious plans.' : 'Beneficios de estudiante para tus planes.'}</p></div>
         </div>
-        <div className="phone-tabbar"><span className="tab-active"><Compass size={14} />{en ? 'Explore' : 'Explora'}</span><span><GraduationCap size={14} />{en ? 'Student' : 'Estudiante'}</span></div>
+        <p className="app-concept-note">{en ? 'Concept preview · not live' : 'Vista conceptual · no activa'}</p>
       </div>
     </div>
-    <div className="phone-sticker sticker-offer sticker-offer-a" aria-hidden="true">{text.stickerOfferA}</div>
-    <div className="phone-sticker sticker-offer sticker-offer-b" aria-hidden="true">{text.stickerOfferB}</div>
+    {[text.stickerOfferA, text.stickerOfferB].map((offer, i) => <div className={`phone-sticker sticker-offer sticker-offer-${i === 0 ? 'a' : 'b'}`} aria-hidden="true" key={offer}>
+      <svg className="badge-shape" viewBox="0 0 80 80"><path d="m39 3 9 5 10-2 5 10 10 4-1 11 5 9-7 9v12l-12 4-7 9-11-3-11 5-7-9-12-2-1-11-7-8 5-11-3-11 10-6 4-10 11 1Z" fill={i === 0 ? '#ff927c' : '#ffcf8f'} stroke="#272326" strokeWidth="2.5" strokeLinejoin="round" /></svg>
+      <span>{offer.split(' ')[0]}<br />OFF</span>
+    </div>)}
+    <div className="phone-sticker sticker-benefit" aria-hidden="true">{en ? <>STUDENT<br />BENEFITS</> : <>BENEFICIOS<br />ESTUDIANTILES</>}</div>
     <div className="phone-sticker sticker-category sticker-food" aria-hidden="true"><Store size={15} />{text.stickerFood}</div>
     <div className="phone-sticker sticker-category sticker-fashion" aria-hidden="true"><Tag size={15} />{text.stickerFashion}</div>
     <div className="phone-sticker sticker-category sticker-coffee" aria-hidden="true"><Coffee size={15} />{text.stickerCoffee}</div>
     <div className="phone-caption"><span className="caption-dot" />{text.mockDisclaimer}</div>
   </div>;
+}
+
+function BenefitIcon({ kind }: { kind: number }) {
+  return <svg viewBox="0 0 80 80" fill="none" stroke="#272326" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M9 14 5 8m15 1-1-7M7 25l-6-2" />
+    {kind === 0 ? <>
+      <path d="M20 29h48v39H20z" fill="#fff4d4" /><path d="M17 29 25 15h37l9 14" fill="#ff785f" />
+      <path d="M17 29q0 10 9 6 7 8 15 0 8 8 15 0 10 5 15-6" fill="#ff785f" />
+      <path d="M28 46h13v22H28zm21-2h12v12H49z" fill="#f8bc73" />
+      <path d="M69 47c-10 0-15 9-12 16l12 14 12-14c3-7-2-16-12-16Z" fill="#ff6654" /><circle cx="69" cy="58" r="4" fill="#fff3db" />
+    </> : kind === 1 ? <>
+      <path d="m18 40 27-25 24 5 5 25-29 29Z" fill="#ff7c62" /><circle cx="59" cy="31" r="4" fill="#fff4d4" />
+      <path d="m35 58 19-21" /><circle cx="36" cy="40" r="4" fill="#fff4d4" /><circle cx="54" cy="57" r="4" fill="#fff4d4" />
+    </> : <>
+      <circle cx="23" cy="32" r="10" fill="#c9b9f1" /><circle cx="58" cy="33" r="10" fill="#ffd080" /><circle cx="41" cy="23" r="11" fill="#ff8975" />
+      <path d="M7 65v-5c0-19 32-19 32 0v5Z" fill="#d0bdf1" /><path d="M43 65v-5c0-19 32-19 32 0v5Z" fill="#ffd183" />
+      <path d="M23 70v-7c0-24 37-24 37 0v7Z" fill="#ff8975" />
+    </>}
+  </svg>;
 }
 
 export default function LandingPage() {
@@ -200,7 +227,7 @@ export default function LandingPage() {
             <h1>{t.titleA}<br /><span>{t.titleB}</span></h1>
             <p className="hero-intro">{t.intro}</p>
             <div className="hero-buttons">
-              <button className="tanda-button button-coral" onClick={() => setDialogOpen(true)}>{t.download}<ArrowRight size={17} /></button>
+               <button className="tanda-button button-coral" onClick={() => setDialogOpen(true)}><Download size={16} />{t.download}</button>
               <a className="tanda-button button-quiet" href="#como-funciona"><Play size={14} />{t.how}</a>
             </div>
             <div className="hero-location"><MapPin size={14} /><span>{t.city}</span></div>
@@ -208,7 +235,7 @@ export default function LandingPage() {
           <PhonePreview en={en} text={t} />
         </div>
         <div className="panorama-section" aria-label={en ? 'Medellín illustration' : 'Ilustración de Medellín'}>
-          <div className="panorama-frame"><AnimatedPanorama en={en} /><span className="panorama-caption">{t.panoramaNote}</span></div>
+          <div className="panorama-frame"><AnimatedPanorama en={en} /><img className="panorama-right-piece" src={`${import.meta.env.BASE_URL}images/tanda-approved-panorama.png`} alt="" aria-hidden="true" /><span className="panorama-caption">{t.panoramaNote}</span></div>
         </div>
       </section>
 
@@ -221,7 +248,7 @@ export default function LandingPage() {
           </div>
           <div className="perks-grid">
             {t.cards.map(([title, body], i) => <article className={`perk-card perk-${i}`} key={title}>
-              <span className="perk-icon">{i === 0 ? <Store /> : i === 1 ? <Tag /> : <UsersRound />}</span>
+              <span className="perk-icon"><BenefitIcon kind={i} /></span>
               <span className="perk-number">0{i + 1}</span>
               <div className="perk-copy"><h3>{title}</h3><p>{body}</p></div>
             </article>)}
@@ -233,13 +260,13 @@ export default function LandingPage() {
         <div className="brand-strip-inner">
           <h2 id="brand-strip-title">{t.brandsTitle}</h2>
           <div className="brand-names" aria-label={en ? 'Illustrative brand names' : 'Nombres de marcas ilustrativos'}>
-            <span className="brand-wordmark brand-script">Juan Valdez</span>
-            <span className="brand-wordmark brand-circle">éxito</span>
-            <span className="brand-wordmark brand-serif">Crepes<br />&amp; Waffles</span>
-            <span className="brand-wordmark brand-italic">falabella</span>
-            <span className="brand-wordmark brand-bold">adidas</span>
-            <span className="brand-wordmark brand-cinema">CINE<br />COLOMBIA</span>
-            <span className="brand-wordmark brand-rappi">Rappi</span>
+            <span className="brand-wordmark brand-juan">Juan Valdez<span>CAFÉ DE COLOMBIA</span></span>
+            <span className="brand-wordmark"><span className="brand-exito">éxito</span></span>
+            <span className="brand-wordmark brand-crepes">Crepes<br />&amp; Waffles</span>
+            <span className="brand-wordmark brand-falabella">falabella.</span>
+            <span className="brand-wordmark brand-adidas"><svg viewBox="0 0 70 45" aria-label="adidas" role="img"><g fill="#171717"><path d="m12 23 7-4 8 14H17Zm15-9 7-4 14 23H36Zm15-9 7-4 19 32H56Z" /><text x="35" y="44" textAnchor="middle" fontFamily="Arial,sans-serif" fontWeight="bold" fontSize="16">adidas</text></g></svg></span>
+            <span className="brand-wordmark brand-cine"><svg viewBox="0 0 80 42" role="img" aria-label="Cine Colombia"><g fill="none" stroke="#16388b" strokeWidth="3"><circle cx="32" cy="16" r="13" /><circle cx="32" cy="16" r="8" /><path d="M42 7a13 13 0 1 1 0 18m2-14a8 8 0 1 1 0 10" /></g><text x="40" y="40" textAnchor="middle" fill="#16388b" fontSize="7" fontWeight="900" fontFamily="Arial,sans-serif">CINE COLOMBIA</text></svg></span>
+            <span className="brand-wordmark"><img src={`${import.meta.env.BASE_URL}images/reference-assets/rappi.png`} alt="Rappi" /></span>
           </div>
           <p className="brand-disclaimer"><strong>{en ? 'Illustrative only · no partnerships' : 'Solo ilustrativo · sin alianzas'}</strong>{t.brandsDisclaimer}</p>
         </div>
@@ -252,8 +279,8 @@ export default function LandingPage() {
             <h2>{t.howTitle}</h2>
           </div>
           <div className="how-steps">
-            {t.steps.map(([number, title, body]) => <article className="how-step" key={number}>
-              <span className="how-number">{number}</span><div><h3>{title}</h3><p>{body}</p></div><ArrowRight className="how-arrow" size={17} />
+            {t.steps.map(([number, title, body], i) => <article className="how-step" key={number}>
+              <span className={`how-number how-icon-${i}`}>{i === 0 ? <Download /> : i === 1 ? <GraduationCap /> : <Percent />}</span><div><h3>{title}</h3><p>{body}</p></div><ArrowRight className="how-arrow" size={17} />
             </article>)}
           </div>
           <p className="honesty-note"><span />{t.note}</p>

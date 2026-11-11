@@ -8,6 +8,12 @@ When the user says to match the Tanda picture exactly, reproduce its composition
 
 **How to apply:** Use user-supplied replacement artwork directly, without tracing or redrawing it, and keep semantic text and working controls separate. The latest explicit reference takes precedence over earlier stylistic choices.
 
+Judge fidelity by the whole composition at the reference's viewport, including relative scale, overlap and vertical density—not merely whether the same elements are present.
+
+**Why:** The user repeated “exactly like this” after rejecting versions whose phones, illustration and section spacing still differed substantially.
+
+**How to apply:** Compare the complete page at the reference dimensions before calling a visual match finished, while also checking the responsive mobile layout.
+
 Treat screenshot crops as references, not final production artwork. Use deliberately authored vector artwork or a genuinely high-resolution original before adding motion. Do not auto-trace the screenshot.
 
 **Why:** The user rejected the screenshot-derived hero as blurry, then rejected automatic tracing because the faces, lettering and shapes were distorted. They explicitly asked to fix artwork before animation.
