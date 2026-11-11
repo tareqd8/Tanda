@@ -39,16 +39,23 @@ export default function ReferencePanorama({ en }: { en: boolean }) {
           <rect width="135" height="275" fill="#000" />
           <rect y="275" width="135" height="30" fill={`url(#${id}-hill-blend)`} />
         </mask>
+        <linearGradient id={`${id}-left-edge`} x1="580" y1="0" x2="600" y2="0" gradientUnits="userSpaceOnUse"><stop stopColor="#fff" /><stop offset="1" stopColor="#000" /></linearGradient>
+        <mask id={`${id}-left-edge-mask`}><rect width="580" height="400" fill="#fff" /><rect x="580" width="20" height="400" fill={`url(#${id}-left-edge)`} /></mask>
         <clipPath id={`${id}-hill`}><path d="M0 240Q65 218 145 238V355H0Z" /></clipPath>
         <clipPath id={`${id}-coast`}><path d="M820 225H1024V400H820Z" /></clipPath>
         <linearGradient id={`${id}-coast-fade`} x1="0" y1="225" x2="0" y2="250" gradientUnits="userSpaceOnUse"><stop stopColor="#000" /><stop offset="1" stopColor="#fff" /></linearGradient>
         <mask id={`${id}-coast-mask`}><rect x="820" y="225" width="204" height="175" fill={`url(#${id}-coast-fade)`} /></mask>
+        <linearGradient id={`${id}-coast-edge`} x1="820" y1="0" x2="850" y2="0" gradientUnits="userSpaceOnUse"><stop stopColor="#000" /><stop offset="1" stopColor="#fff" /></linearGradient>
+        <mask id={`${id}-coast-edge-mask`}><rect x="820" width="30" height="400" fill={`url(#${id}-coast-edge)`} /><rect x="850" width="174" height="400" fill="#fff" /></mask>
         <linearGradient id={`${id}-cabin-sky`} x1="0" y1="220" x2="0" y2="300" gradientUnits="userSpaceOnUse"><stop stopColor="#f4d6e8" /><stop offset="1" stopColor="#f8c8d5" /></linearGradient>
         {cabins.map((path, i) => <clipPath id={`${id}-cabin-${i}`} key={i}><path d={path} /></clipPath>)}
       </defs>
+      <path d="M565 326Q645 292 710 330T852 319V400H565Z" fill="#f4d9e7" />
+      <path d="M580 379Q650 337 724 365T852 367V400H580Z" fill="#ffe3bf" />
+      <path d="M570 388Q650 371 725 391T852 388V400H570Z" fill="#eee0f1" />
       <g clipPath={`url(#${id}-hill)`}><image href={scene} x="0" y="61" width="614.4" height="614.4" /></g>
-      <g mask={`url(#${id}-left)`}><SceneImage /></g>
-      <g clipPath={`url(#${id}-coast)`} mask={`url(#${id}-coast-mask)`}><image href={scene} x="204.8" y="-96" width="819.2" height="819.2" /></g>
+      <g mask={`url(#${id}-left)`}><g mask={`url(#${id}-left-edge-mask)`}><SceneImage /></g></g>
+      <g clipPath={`url(#${id}-coast)`} mask={`url(#${id}-coast-mask)`}><g mask={`url(#${id}-coast-edge-mask)`}><image href={scene} x="204.8" y="-96" width="819.2" height="819.2" /></g></g>
       {cabins.map((path, i) => <g key={i}>
         <path d={path} fill={`url(#${id}-cabin-sky)`} stroke={`url(#${id}-cabin-sky)`} strokeWidth="1.5" />
         <g className={`scene-mover reference-cabin reference-cabin-${i}`}><g clipPath={`url(#${id}-cabin-${i})`}><SceneImage /></g></g>

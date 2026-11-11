@@ -20,6 +20,12 @@ Preserve the reference's relative scale on wider desktop windows, not just at th
 
 **How to apply:** Compare both the reference-width composition and a wider desktop viewport. Scale related typography, mockups, artwork and section spacing together rather than independently capping them.
 
+The phone mockups must leave the woman/cyclist and the background church visible.
+
+**Why:** The user explicitly rejected oversized phones covering those parts of the illustration.
+
+**How to apply:** Preserve clear space around those foreground characters and landmarks when resizing or repositioning the phone pair.
+
 Treat screenshot crops as references, not final production artwork. Use deliberately authored vector artwork or a genuinely high-resolution original before adding motion. Do not auto-trace the screenshot.
 
 **Why:** The user rejected the screenshot-derived hero as blurry, then rejected automatic tracing because the faces, lettering and shapes were distorted. They explicitly asked to fix artwork before animation.
