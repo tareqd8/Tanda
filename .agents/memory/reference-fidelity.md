@@ -14,6 +14,12 @@ Judge fidelity by the whole composition at the reference's viewport, including r
 
 **How to apply:** Compare the complete page at the reference dimensions before calling a visual match finished, while also checking the responsive mobile layout.
 
+Preserve the reference's relative scale on wider desktop windows, not just at the reference image's width.
+
+**Why:** The user rejected a comparison where capped content widths, type and mockups made the real page look miniature despite a closer narrow-screen rendering.
+
+**How to apply:** Compare both the reference-width composition and a wider desktop viewport. Scale related typography, mockups, artwork and section spacing together rather than independently capping them.
+
 Treat screenshot crops as references, not final production artwork. Use deliberately authored vector artwork or a genuinely high-resolution original before adding motion. Do not auto-trace the screenshot.
 
 **Why:** The user rejected the screenshot-derived hero as blurry, then rejected automatic tracing because the faces, lettering and shapes were distorted. They explicitly asked to fix artwork before animation.

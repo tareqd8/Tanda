@@ -1,0 +1,155 @@
+.reference-scene-desktop { display: none; }
+.hero-scribble { display: none; }
+.reference-city { position: relative; width: 100%; }
+.reference-city > svg { display: block; width: 100%; height: auto; }
+.reference-city .scene-mover { transform-box: view-box; }
+@media (prefers-reduced-motion: no-preference) {
+  .reference-cabin { animation: reference-cabin-drift 7s ease-in-out infinite alternate; }
+  .reference-cabin-1 { animation-delay: -3s; }
+  .reference-cabin-2 { animation-delay: -5s; }
+  .reference-wheel { animation: tanda-wheel-turn 2.4s linear infinite; }
+  .motion-is-paused .scene-mover { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reference-city .scene-mover { animation: none !important; }
+  .reference-wheel { display: none; }
+}
+@keyframes reference-cabin-drift { from { transform: translate(-1.5px, .5px); } to { transform: translate(1.5px, -.5px); } }
+/* Desktop: the whole reference composition is laid out on a 1024-unit canvas
+   and scales uniformly with the viewport (1u = 1px at 1024 wide). */
+@media (min-width: 760px) {
+  .tanda-page {
+    --u: calc(min(100vw, 1760px) / 1024);
+    background:
+      radial-gradient(ellipse 40% 30% at 0 20%, #f3dcf6, transparent 70%),
+      radial-gradient(ellipse 45% 35% at 100% 15%, #ffe0ea, transparent 70%),
+      radial-gradient(ellipse 50% 30% at 50% 60%, #fbe9f3, transparent 70%),
+      #fff6f4;
+  }
+  .tanda-page .tanda-header { height: calc(50 * var(--u)); background: #fff5f6d0; }
+  .tanda-page .tanda-header-inner { width: calc(830 * var(--u)); }
+  .tanda-page .tanda-logo-slot { min-width: calc(86 * var(--u)); min-height: calc(36 * var(--u)); }
+  .tanda-page .tanda-logo-fallback { font-size: calc(30 * var(--u)); }
+  .tanda-page .tanda-stored-logo { max-width: calc(100 * var(--u)); max-height: calc(38 * var(--u)); }
+  .tanda-page .tanda-logo-spark { width: calc(13 * var(--u)); }
+  .tanda-page .tanda-nav { gap: calc(36 * var(--u)); margin-left: calc(20 * var(--u)); }
+  .tanda-page .tanda-nav a { font-size: calc(11 * var(--u)); font-weight: 700; }
+  .tanda-page .tanda-header-actions { gap: calc(14 * var(--u)); }
+  .tanda-page .tanda-language { min-width: calc(31 * var(--u)); height: calc(27 * var(--u)); font-size: calc(9 * var(--u)); background: #fff; }
+  .tanda-page .header-download { min-height: calc(28 * var(--u)); padding-inline: calc(18 * var(--u)); font-size: calc(11 * var(--u)); }
+
+  /* Hero: fixed canvas, copy upper-left, phones right, scene along the bottom */
+  .tanda-page .tanda-hero { position: relative; height: calc(350 * var(--u)); padding: 0; background: none; }
+  .tanda-page .hero-inner { position: relative; display: block; width: calc(1024 * var(--u)); height: 100%; margin: 0 auto; }
+  .tanda-page .hero-copy { position: absolute; z-index: 3; top: calc(15 * var(--u)); left: calc(95 * var(--u)); width: calc(340 * var(--u)); padding: 0; text-align: left; }
+  .tanda-page .hero-copy h1 { position: relative; font-size: calc(46 * var(--u)); line-height: 1.03; letter-spacing: -.04em; }
+  .tanda-page .hero-copy h1 span { margin-top: calc(4 * var(--u)); padding-inline: calc(2 * var(--u)); }
+  .tanda-page .hero-copy h1 span::before { inset: .02em -.28em -.04em -.32em; border-radius: 999px; }
+  .tanda-page .hero-copy h1::before { top: calc(-14 * var(--u)); left: calc(-30 * var(--u)); width: calc(24 * var(--u)); height: calc(30 * var(--u)); background-size: calc(12 * var(--u)) calc(24 * var(--u)); }
+  .tanda-page .hero-copy h1::before { display: none; }
+  .tanda-page .hero-scribble { position: absolute; display: block; width: calc(30 * var(--u)); height: calc(34 * var(--u)); fill: none; stroke: #ff5946; stroke-width: 2.3; stroke-linecap: round; }
+  .tanda-page .hero-scribble-left { left: calc(-36 * var(--u)); top: calc(1 * var(--u)); transform: rotate(-8deg); }
+  .tanda-page .hero-scribble-right { right: calc(4 * var(--u)); top: calc(69 * var(--u)); transform: rotate(-9deg); }
+  .tanda-page .hero-intro { max-width: calc(335 * var(--u)); margin: calc(13 * var(--u)) 0 calc(12 * var(--u)); padding: 0; background: none; box-shadow: none; font-size: calc(15 * var(--u)); line-height: 1.2; }
+  .tanda-page .hero-buttons { gap: calc(12 * var(--u)); flex-wrap: nowrap; }
+  .tanda-page .hero-buttons .tanda-button { flex-shrink: 0; min-height: calc(33 * var(--u)); padding: 0 calc(14 * var(--u)); gap: calc(8 * var(--u)); font-size: calc(12 * var(--u)); font-weight: 800; white-space: nowrap; }
+  .tanda-page .hero-buttons .button-coral { width: calc(164 * var(--u)); }
+  .tanda-page .hero-buttons .button-quiet { width: calc(160 * var(--u)); }
+  .tanda-page .hero-buttons .tanda-button svg { width: calc(14 * var(--u)); height: calc(14 * var(--u)); }
+  .tanda-page .button-quiet { border: 1.5px solid #29252a; background: #fff8f8; }
+
+  /* Complete foreground objects are independently positioned around the phones. */
+  .tanda-page .panorama-section { position: absolute; z-index: 1; top: calc(-50 * var(--u)); left: 50%; right: auto; bottom: auto; width: calc(1024 * var(--u)); height: calc(400 * var(--u)); margin: 0; padding: 0; overflow: visible; transform: translateX(-50%); }
+  .tanda-page .reference-scene-desktop { display: block; }
+  .tanda-page .reference-scene-mobile { display: none; }
+  .tanda-page .panorama-frame { position: static; width: 100%; padding: 0; }
+  .tanda-page .panorama-frame .reference-panorama { position: static; width: 100%; margin: calc(-128 * var(--u)) 0 0; }
+  .tanda-page .panorama-frame .motion-panorama-svg { width: 100%; height: auto; aspect-ratio: 3 / 1; clip-path: none; mask-image: none; -webkit-mask-image: none; }
+  .tanda-page .panorama-frame .panorama-motion-toggle { right: calc(4 * var(--u)); bottom: calc(2 * var(--u)); top: auto; width: calc(26 * var(--u)); height: calc(26 * var(--u)); }
+  .tanda-page .panorama-frame .panorama-motion-toggle span { width: calc(20 * var(--u)); height: calc(20 * var(--u)); }
+  .tanda-page .panorama-caption { right: calc(34 * var(--u)); bottom: calc(4 * var(--u)); font-size: calc(6 * var(--u)); opacity: .75; }
+
+  .tanda-page .phone-stage { position: absolute; z-index: 4; top: calc(8 * var(--u)); left: calc(440 * var(--u)); width: calc(560 * var(--u)); height: calc(350 * var(--u)); min-height: 0; transform: none; display: block; }
+  .tanda-page .phone-stage::before { display: none; }
+  .tanda-page .phone { border-width: calc(5 * var(--u)); border-color: #2d2a33; border-radius: calc(26 * var(--u)); box-shadow: 0 0 0 calc(1.5 * var(--u)) #c9bfd0, calc(6 * var(--u)) calc(12 * var(--u)) calc(22 * var(--u)) #4a2e4430; }
+  .tanda-page .phone-screen { border-radius: calc(21 * var(--u)); }
+  .tanda-page .phone-front { z-index: 3; left: calc(108 * var(--u)); top: calc(8 * var(--u)); width: calc(168 * var(--u)); height: calc(318 * var(--u)); transform: rotate(-4deg); }
+  .tanda-page .phone-back { z-index: 2; left: calc(275 * var(--u)); right: auto; top: calc(24 * var(--u)); width: calc(156 * var(--u)); height: calc(294 * var(--u)); transform: rotate(10deg); }
+  .tanda-page .phone-speaker { top: calc(4 * var(--u)); width: calc(46 * var(--u)); height: calc(11 * var(--u)); border-radius: calc(8 * var(--u)); }
+  .tanda-page .phone-status { padding: calc(6 * var(--u)) calc(14 * var(--u)) 0; font-size: calc(6 * var(--u)); }
+  .tanda-page .phone-wordmark { margin: calc(9 * var(--u)) 0 calc(7 * var(--u)); font-size: calc(17 * var(--u)); }
+  .tanda-page .phone-front .phone-screen h3 { margin: 0 calc(9 * var(--u)) calc(1 * var(--u)); font-size: calc(11.5 * var(--u)); }
+  .tanda-page .phone-subline { margin: 0 calc(9 * var(--u)) calc(6 * var(--u)); font-size: calc(6.5 * var(--u)); }
+  .tanda-page .phone-search { height: calc(21 * var(--u)); margin: 0 calc(8 * var(--u)) calc(7 * var(--u)); padding: 0 calc(6 * var(--u)); gap: calc(4 * var(--u)); font-size: calc(5.5 * var(--u)); }
+  .tanda-page .phone-search svg { width: calc(8 * var(--u)); height: calc(8 * var(--u)); }
+  .tanda-page .app-categories { gap: calc(4 * var(--u)); margin: 0 calc(8 * var(--u)) calc(8 * var(--u)); }
+  .tanda-page .app-categories span { height: calc(28 * var(--u)); border-radius: calc(7 * var(--u)); }
+  .tanda-page .app-categories span svg { width: calc(13 * var(--u)); height: calc(13 * var(--u)); }
+  .tanda-page .app-categories small { margin-top: calc(2 * var(--u)); font-size: calc(5 * var(--u)); }
+  .tanda-page .phone-section-label { margin: 0 calc(9 * var(--u)) calc(5 * var(--u)); }
+  .tanda-page .phone-section-label strong { font-size: calc(8.5 * var(--u)); }
+  .tanda-page .phone-section-label > span { font-size: calc(5.5 * var(--u)); }
+  .tanda-page .app-food-card { margin: 0 calc(7 * var(--u)); border-radius: calc(9 * var(--u)); }
+  .tanda-page .app-food-photo { height: calc(90 * var(--u)); }
+  .tanda-page .app-food-photo > span { top: calc(6 * var(--u)); left: calc(5 * var(--u)); padding: calc(3 * var(--u)) calc(5 * var(--u)); border-radius: calc(5 * var(--u)); font-size: calc(10 * var(--u)); }
+  .tanda-page .app-food-photo > svg { width: calc(11 * var(--u)); height: calc(11 * var(--u)); }
+  .tanda-page .app-food-copy { padding: calc(5 * var(--u)) calc(6 * var(--u)); }
+  .tanda-page .app-food-copy strong { font-size: calc(7 * var(--u)); }
+  .tanda-page .app-food-copy p { font-size: calc(5.5 * var(--u)); }
+  .tanda-page .app-concept-note { margin-top: calc(4 * var(--u)); font-size: calc(4.5 * var(--u)); }
+  .tanda-page .phone-back-heading { height: calc(20 * var(--u)); padding: 0 calc(10 * var(--u)); font-size: calc(15 * var(--u)); }
+  .tanda-page .phone-back-heading svg { width: calc(9 * var(--u)); height: calc(9 * var(--u)); }
+  .tanda-page .app-photo-card { margin: 0 calc(7 * var(--u)) calc(6 * var(--u)); border-radius: calc(7 * var(--u)); }
+  .tanda-page .app-photo-card > img { height: calc(72 * var(--u)); object-position: center 50%; }
+  .tanda-page .app-photo-card > div { min-height: calc(36 * var(--u)); padding: calc(5 * var(--u)); }
+  .tanda-page .app-photo-card strong { font-size: calc(7 * var(--u)); }
+  .tanda-page .app-photo-card p { max-width: calc(75 * var(--u)); font-size: calc(5.5 * var(--u)); }
+  .tanda-page .app-discount { top: calc(5 * var(--u)); right: calc(4 * var(--u)); padding: calc(3 * var(--u)); border-radius: calc(4 * var(--u)); font-size: calc(6 * var(--u)); }
+
+  .tanda-page .sticker-benefit { z-index: 5; top: calc(4 * var(--u)); left: calc(6 * var(--u)); padding: calc(10 * var(--u)) calc(12 * var(--u)); border-width: calc(2 * var(--u)); font-size: calc(11.5 * var(--u)); transform: rotate(-10deg); }
+  .tanda-page .sticker-offer { width: calc(88 * var(--u)); height: calc(76 * var(--u)); padding: calc(12 * var(--u)); font-size: calc(18 * var(--u)); }
+  .tanda-page .sticker-offer-a { top: calc(92 * var(--u)); left: calc(2 * var(--u)); transform: rotate(-14deg); }
+  .tanda-page .sticker-offer-b { top: 0; left: calc(422 * var(--u)); right: auto; transform: rotate(8deg); }
+  .tanda-page .sticker-category { left: calc(428 * var(--u)); right: auto; min-height: calc(30 * var(--u)); gap: calc(7 * var(--u)); padding: 0 calc(14 * var(--u)); border-width: calc(2 * var(--u)); font-size: calc(12 * var(--u)); }
+  .tanda-page .sticker-category svg { width: calc(15 * var(--u)); height: calc(15 * var(--u)); }
+  .tanda-page .sticker-food { top: calc(72 * var(--u)); }
+  .tanda-page .sticker-fashion { top: calc(112 * var(--u)); left: calc(436 * var(--u)); }
+  .tanda-page .sticker-coffee { top: calc(150 * var(--u)); left: calc(424 * var(--u)); }
+
+  /* Lower sections share the 95–930 content band */
+  .tanda-page .perks-inner, .tanda-page .brand-strip-inner, .tanda-page .how-inner { width: calc(835 * var(--u)); }
+  .tanda-page .perks-section { padding: calc(14 * var(--u)) 0 0; }
+  .tanda-page .section-heading { margin-bottom: calc(9 * var(--u)); }
+  .tanda-page .section-heading h2 { font-size: calc(23 * var(--u)); }
+  .tanda-page .perks-grid { gap: calc(14 * var(--u)); }
+  .tanda-page .perk-card { min-height: calc(86 * var(--u)); gap: calc(26 * var(--u)); padding: calc(8 * var(--u)) calc(18 * var(--u)); border-radius: calc(16 * var(--u)); box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) #b48ca420; }
+  .tanda-page .perk-icon, .tanda-page .perk-icon svg { flex-basis: calc(70 * var(--u)); width: calc(70 * var(--u)); height: calc(70 * var(--u)); }
+  .tanda-page .perk-copy h3 { font-size: calc(18 * var(--u)); }
+  .tanda-page .perk-copy p { font-size: calc(11 * var(--u)); }
+  .tanda-page .brand-strip { padding: calc(8 * var(--u)) 0 calc(10 * var(--u)); }
+  .tanda-page .brand-strip h2 { margin-bottom: calc(9 * var(--u)); font-size: calc(22 * var(--u)); line-height: 1.3; }
+  .tanda-page .brand-names { gap: calc(13 * var(--u)); }
+  .tanda-page .brand-wordmark { min-height: calc(54 * var(--u)); padding: calc(7 * var(--u)); border-radius: calc(10 * var(--u)); background: #fffdfd; }
+  .tanda-page .brand-wordmark img { height: calc(38 * var(--u)); }
+  .tanda-page .brand-juan { font-size: calc(17 * var(--u)); }
+  .tanda-page .brand-juan span { font-size: calc(4 * var(--u)); }
+  .tanda-page .brand-exito { width: calc(40 * var(--u)); height: calc(40 * var(--u)); font-size: calc(17 * var(--u)); }
+  .tanda-page .brand-crepes { font-size: calc(15 * var(--u)); }
+  .tanda-page .brand-falabella { font-size: calc(21 * var(--u)); }
+  .tanda-page .brand-adidas svg { width: calc(56 * var(--u)); height: calc(38 * var(--u)); }
+  .tanda-page .brand-cine svg { width: calc(62 * var(--u)); height: calc(38 * var(--u)); }
+  .tanda-page .brand-strip-inner > p { margin-top: calc(5 * var(--u)); font-size: calc(6 * var(--u)); opacity: .8; }
+  .tanda-page .how-section { padding: calc(8 * var(--u)) 0 calc(18 * var(--u)); background: transparent; }
+  .tanda-page .how-inner { width: calc(870 * var(--u)); grid-template-columns: calc(190 * var(--u)) 1fr; gap: calc(10 * var(--u)) calc(14 * var(--u)); transform: none; }
+  .tanda-page .how-heading { padding-top: calc(5 * var(--u)); }
+  .tanda-page .how-heading h2 { font-size: calc(23 * var(--u)); }
+  .tanda-page .how-heading h2::after { bottom: calc(-10 * var(--u)); left: 0; width: calc(110 * var(--u)); }
+  .tanda-page .how-steps { gap: calc(28 * var(--u)); }
+  .tanda-page .how-step { grid-template-columns: calc(44 * var(--u)) 1fr; gap: calc(12 * var(--u)); min-height: calc(58 * var(--u)); padding: calc(8 * var(--u)) calc(12 * var(--u)); border-radius: calc(14 * var(--u)); background: #fffdfd; box-shadow: 0 calc(4 * var(--u)) calc(12 * var(--u)) #b48ca41c; }
+  .tanda-page .how-number { height: calc(40 * var(--u)); border-radius: calc(10 * var(--u)); }
+  .tanda-page .how-number svg { width: calc(20 * var(--u)); height: calc(20 * var(--u)); }
+  .tanda-page .how-step h3 { font-size: calc(12 * var(--u)); }
+  .tanda-page .how-step p { font-size: calc(8 * var(--u)); }
+  .tanda-page .how-arrow { right: calc(-23 * var(--u)); width: calc(16 * var(--u)); }
+  .tanda-page .honesty-note { font-size: calc(7 * var(--u)); opacity: .8; }
+}

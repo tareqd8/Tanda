@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, Check, Compass, Coffee, Download, GraduationCap, Grid2X2, Heart, MapPin, Menu, Percent, Play, Shirt, Store, Tag, UtensilsCrossed, X } from 'lucide-react';
 import { useGetBrandLogo } from '@workspace/api-client-react';
 import AnimatedPanorama from '@/components/AnimatedPanorama';
+import ReferencePanorama from '@/components/ReferencePanorama';
 import { Link } from 'wouter';
 import './landing.css';
 import './landing-reference.css';
+import './landing-scale.css';
 
 type Language = 'es' | 'en';
 
@@ -130,7 +132,7 @@ function PhonePreview({ en, text }: { en: boolean; text: Copy }) {
         <div className="phone-status"><span>9:41</span><span>● ● ●</span></div>
         <div className="phone-back-heading"><span>‹</span><Heart size={10} /></div>
         <div className="app-photo-card">
-          <img src={`${imageBase}tanda-cafe-editorial.jpg`} alt="" />
+          <img src={`${imageBase}reference-assets/tanda-latte-closeup.jpg`} alt="" />
           <div><strong>{en ? 'Neighborhood café' : 'Café de barrio'}</strong><span className="app-discount">30% OFF</span><p>{en ? 'A pause, just for you' : 'Una pausa para ti'}</p></div>
         </div>
         <div className="app-photo-card">
@@ -223,6 +225,8 @@ export default function LandingPage() {
       <section className="tanda-hero">
         <div className="hero-inner">
           <div className="hero-copy">
+            <svg className="hero-scribble hero-scribble-left" viewBox="0 0 32 36" aria-hidden="true"><path d="m5 28-5-4m13-3L5 8m18 9L20 1" /></svg>
+            <svg className="hero-scribble hero-scribble-right" viewBox="0 0 32 36" aria-hidden="true"><path d="m4 10 8-8m-5 18 18-7M9 28l20 3" /></svg>
             <p className="tanda-eyebrow"><span className="eyebrow-dot" />{t.heroEyebrow}</p>
             <h1>{t.titleA}<br /><span>{t.titleB}</span></h1>
             <p className="hero-intro">{t.intro}</p>
@@ -235,7 +239,7 @@ export default function LandingPage() {
           <PhonePreview en={en} text={t} />
         </div>
         <div className="panorama-section" aria-label={en ? 'Medellín illustration' : 'Ilustración de Medellín'}>
-          <div className="panorama-frame"><AnimatedPanorama en={en} /><img className="panorama-right-piece" src={`${import.meta.env.BASE_URL}images/tanda-approved-panorama.png`} alt="" aria-hidden="true" /><span className="panorama-caption">{t.panoramaNote}</span></div>
+          <div className="panorama-frame"><div className="reference-scene-desktop"><ReferencePanorama en={en} /></div><div className="reference-scene-mobile"><AnimatedPanorama en={en} /></div><span className="panorama-caption">{t.panoramaNote}</span></div>
         </div>
       </section>
 
