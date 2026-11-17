@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -41,17 +41,21 @@ jobs:
 
       - name: Build Tanda
         run: pnpm --dir artifacts/tanda build
+        env:
+          NODE_ENV: production
+          BASE_PATH: /
+          PORT: 5173
 
       - name: Add custom domain
-        run: echo "tanda.com.co" > artifacts/tanda/dist/CNAME
+        run: echo "tanda.com.co" > artifacts/tanda/dist/public/CNAME
 
-      - name: Configure GitHub Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: artifacts/tanda/dist
+          path: artifacts/tanda/dist/public
 
       - name: Deploy website
         id: deployment
