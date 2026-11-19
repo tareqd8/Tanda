@@ -116,7 +116,7 @@ function Brand({ footer = false }: { footer?: boolean }) {
     <span className="tanda-logo-slot" data-logo-slot="replaceable-brand-mark" data-logo-ready={useUploadedLogo ? 'true' : 'false'} aria-label="Tanda logo">
       {useUploadedLogo
         ? <img className="tanda-stored-logo" src={logoUrl!} alt="Tanda" onError={() => setImageFailed(true)} />
-        : <><span className="tanda-logo-fallback" aria-hidden="true">tanda</span><svg className="tanda-logo-spark" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 12 8 10M8 4l2 4m5-5-1 5" /></svg></>}
+        : <span className="tanda-logo-fallback" aria-hidden="true">tanda</span>}
     </span>
   </a>;
 }

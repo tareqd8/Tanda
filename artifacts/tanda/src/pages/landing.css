@@ -34,14 +34,9 @@
 .tanda-brand { display: inline-flex; align-items: center; text-decoration: none; }
 .tanda-logo-slot { position: relative; display: inline-flex; align-items: center; min-width: 86px; min-height: 38px; }
 .tanda-logo-fallback { color: var(--tanda-ink); font-size: 31px; font-weight: 1000; line-height: 1; letter-spacing: -.075em; }
-.tanda-logo-spark {
-  position: absolute; top: -1px; right: 1px; width: 15px; fill: none; stroke: var(--tanda-coral);
-  stroke-linecap: round; stroke-width: 2; transform-origin: center; animation: tanda-mark-sparkle 2.8s ease-in-out infinite;
-}
 /* Admin-managed mark replaces the fallback inside this stable slot. */
 .tanda-logo-slot[data-logo-slot="replaceable-brand-mark"] { isolation: isolate; }
-.tanda-logo-slot[data-logo-ready="true"] .tanda-logo-fallback,
-.tanda-logo-slot[data-logo-ready="true"] .tanda-logo-spark { display: none; }
+.tanda-logo-slot[data-logo-ready="true"] .tanda-logo-fallback { display: none; }
 .tanda-stored-logo { display: block; width: 100%; max-width: 100px; max-height: 40px; object-fit: contain; object-position: left center; }
 .tanda-nav { display: flex; align-items: center; gap: clamp(24px, 4vw, 54px); }
 .tanda-nav a, .tanda-mobile-nav a {
@@ -226,7 +221,6 @@
 .footer-main { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 13px; border-bottom: 1px solid var(--tanda-line); }
 .tanda-brand-footer .tanda-logo-fallback { font-size: 22px; }
 .tanda-brand-footer .tanda-logo-slot { min-width: 68px; min-height: 27px; }
-.tanda-brand-footer .tanda-logo-spark { right: 4px; width: 11px; }
 .footer-main p, .footer-main > span { margin: 0; color: #766c72; font-size: 9px; font-weight: 800; }
 .footer-main > span { text-align: right; }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 10px; color: #8b8086; font-size: 8px; font-weight: 900; letter-spacing: .1em; }
@@ -346,4 +340,3 @@
 }
 @keyframes tanda-rise { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes tanda-dialog-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes tanda-mark-sparkle { 0%, 100% { opacity: .7; transform: scale(.94) rotate(-3deg); } 50% { opacity: 1; transform: scale(1.08) rotate(3deg); } }

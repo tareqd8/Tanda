@@ -31,7 +31,6 @@
   .tanda-page .tanda-logo-slot { min-width: calc(86 * var(--u)); min-height: calc(36 * var(--u)); }
   .tanda-page .tanda-logo-fallback { font-size: calc(30 * var(--u)); }
   .tanda-page .tanda-stored-logo { max-width: calc(100 * var(--u)); max-height: calc(38 * var(--u)); }
-  .tanda-page .tanda-logo-spark { width: calc(13 * var(--u)); }
   .tanda-page .tanda-nav { gap: calc(36 * var(--u)); margin-left: calc(20 * var(--u)); }
   .tanda-page .tanda-nav a { font-size: calc(11 * var(--u)); font-weight: 700; }
   .tanda-page .tanda-header-actions { gap: calc(14 * var(--u)); }
