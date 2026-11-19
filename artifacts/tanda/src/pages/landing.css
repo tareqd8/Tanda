@@ -182,25 +182,6 @@
 .perk-copy h3 { margin: 0 0 3px; font-size: 18px; font-weight: 1000; letter-spacing: -.04em; }
 .perk-copy p { margin: 0; color: #615960; font-size: 10px; font-weight: 750; line-height: 1.45; }
 
-.brand-strip { padding: 10px 0 28px; }
-.brand-strip-inner { width: min(1000px, calc(100% - 64px)); margin: auto; text-align: center; }
-.brand-strip h2 { margin: 0 0 14px; font-size: clamp(1.35rem, 2.5vw, 1.7rem); font-weight: 1000; letter-spacing: -.055em; }
-.brand-names { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 9px; }
-.brand-wordmark {
-  display: grid; min-height: 58px; place-items: center; padding: 7px 5px; border: 1px solid rgba(41,37,42,.045);
-  border-radius: 12px; color: #3e383d; background: rgba(255,255,255,.8); box-shadow: 0 4px 12px rgba(65,48,54,.045);
-  font-size: 12px; font-weight: 1000; line-height: 1;
-}
-.brand-script { color: #9b273b; font-family: Georgia, serif; font-size: 14px; font-style: italic; }
-.brand-circle { width: 42px; min-height: 42px; margin: auto; border-radius: 50%; color: #342e21; background: #f6d328; font-size: 13px; }
-.brand-serif { font-family: Georgia, serif; font-size: 12px; font-weight: 700; }
-.brand-italic { color: #719138; font-size: 15px; font-style: italic; }
-.brand-bold { font-size: 16px; letter-spacing: -.08em; }
-.brand-cinema { color: #204486; font-size: 8px; letter-spacing: .02em; }
-.brand-rappi { color: #ea4a40; font-size: 17px; font-style: italic; }
-.brand-strip-inner > p { max-width: 780px; margin: 11px auto 0; color: #776d73; font-size: 9px; font-weight: 750; line-height: 1.5; }
-.brand-disclaimer strong { display: block; width: fit-content; margin: 0 auto 5px; padding: 4px 9px; border-radius: 999px; color: #7d3c35; background: #f9e1dc; font-size: 8px; letter-spacing: .025em; }
-
 .how-section { padding: 33px 0 32px; background: hsl(var(--warm-surface)); }
 .how-inner { display: grid; grid-template-columns: 1fr; gap: 12px; align-items: start; }
 .how-heading { padding-top: 0; text-align: center; }
@@ -242,11 +223,10 @@
   .phone-front { left: 13%; }
   .phone-back { right: 3%; }
   .phone-stage { transform: scale(.94); }
-  .perks-inner, .how-inner, .brand-strip-inner { width: calc(100% - 48px); }
+  .perks-inner, .how-inner { width: calc(100% - 48px); }
   .perk-card { gap: 7px; padding-inline: 10px; }
   .perk-icon { flex-basis: 41px; }
   .perk-copy { padding-left: 8px; }
-  .brand-names { gap: 6px; }
 }
 @media (max-width: 700px) {
   .tanda-header { height: 58px; }
@@ -286,7 +266,7 @@
   .panorama-frame .motion-panorama-svg { min-height: 118px; object-fit: contain; }
   .panorama-caption { right: 48px; bottom: 3px; left: 8px; font-size: 6px; text-align: right; }
   .perks-section { padding: 10px 0 25px; }
-  .perks-inner, .how-inner, .brand-strip-inner { width: calc(100% - 38px); }
+  .perks-inner, .how-inner { width: calc(100% - 38px); }
   .section-heading { margin-bottom: 14px; }
   .section-heading h2 { font-size: 1.55rem; }
   .section-heading p { font-size: 9px; }
@@ -297,12 +277,6 @@
   .perk-copy { padding-left: 11px; }
   .perk-copy h3 { font-size: 15px; }
   .perk-copy p { font-size: 9px; }
-  .brand-strip { padding: 11px 0 29px; }
-  .brand-strip h2 { margin-bottom: 12px; font-size: 1.3rem; }
-  .brand-names { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
-  .brand-wordmark { min-height: 46px; font-size: 10px; }
-  .brand-circle { width: 37px; min-height: 37px; }
-  .brand-strip-inner > p { margin-top: 9px; font-size: 8px; }
   .how-section { padding: 34px 0 32px; }
   .how-inner { grid-template-columns: 1fr; gap: 14px; }
   .how-heading h2 { max-width: 330px; margin: auto; font-size: 2.25rem; }
@@ -330,7 +304,6 @@
   .phone-front { left: 16%; }
   .phone-back { right: 4%; }
   .panorama-caption { font-size: 5px; }
-  .brand-names { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero-copy { animation: tanda-rise .65s cubic-bezier(.18,.78,.27,1) both; }

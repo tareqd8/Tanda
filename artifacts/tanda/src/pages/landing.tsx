@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, Check, Compass, Coffee, Download, GraduationCap, Grid2X2, Heart, MapPin, Menu, Percent, Play, Shirt, Store, Tag, UtensilsCrossed, X } from 'lucide-react';
 import { useGetBrandLogo } from '@workspace/api-client-react';
 import AnimatedPanorama from '@/components/AnimatedPanorama';
-import ReferencePanorama from '@/components/ReferencePanorama';
 import { Link } from 'wouter';
 import './landing.css';
 import './landing-reference.css';
@@ -12,7 +11,7 @@ type Language = 'es' | 'en';
 
 const copy = {
   es: {
-    nav: ['Cómo funciona', 'Beneficios', 'Para comercios'],
+    nav: ['Cómo funciona', 'Beneficios'],
     app: 'Descarga la app',
     heroEyebrow: 'Una nueva forma de vivir Medellín',
     titleA: 'Estudia mucho.', titleB: 'Paga menos.',
@@ -32,8 +31,6 @@ const copy = {
     panoramaNote: 'Descuentos de la ilustración: ejemplos gráficos, no ofertas activas.',
     benefitsTitle: 'Todo lo que necesitas para ahorrar más.',
     benefitsSub: 'Una idea sencilla, pensada para la vida que ya tienes.',
-    brandsTitle: 'Marcas y lugares que te van a encantar',
-    brandsDisclaimer: 'Nombres mostrados solo como ejemplos ilustrativos. No representan alianzas, comercios participantes ni ofertas activas.',
     cards: [
       ['Descubre', 'Encuentra descuentos en restaurantes, tiendas, servicios y más.'],
       ['Ahorra', 'Disfruta beneficios pensados por ser estudiante.'],
@@ -57,7 +54,7 @@ const copy = {
     menu: 'Abrir menú',
   },
   en: {
-    nav: ['How it works', 'Benefits', 'For businesses'],
+    nav: ['How it works', 'Benefits'],
     app: 'Download the app',
     heroEyebrow: 'A new way to make Medellín yours',
     titleA: 'Study hard.', titleB: 'Pay less.',
@@ -77,8 +74,6 @@ const copy = {
     panoramaNote: 'Discounts in the illustration are graphic examples, not live offers.',
     benefitsTitle: 'Everything you need to save more.',
     benefitsSub: 'A simple idea, made for the life you already have.',
-    brandsTitle: 'Brands and places you’ll love',
-    brandsDisclaimer: 'Names shown as illustrative examples only. They do not represent partnerships, participating businesses or live offers.',
     cards: [
       ['Discover', 'Find discounts at restaurants, shops, services and more.'],
       ['Save', 'Enjoy benefits designed for your student life.'],
@@ -206,7 +201,7 @@ export default function LandingPage() {
     return () => window.removeEventListener('keydown', onKey);
   }, [dialogOpen]);
 
-  const nav = <>{t.nav.map((label, i) => <a href={['#como-funciona', '#beneficios', '#comercios'][i]} key={label} onClick={() => setMenuOpen(false)}>{label}</a>)}</>;
+  const nav = <>{t.nav.map((label, i) => <a href={i === 0 ? '#como-funciona' : '#beneficios'} key={label} onClick={() => setMenuOpen(false)}>{label}</a>)}</>;
   return <div className="tanda-page" id="inicio">
     <header className="tanda-header">
       <div className="tanda-header-inner">
@@ -239,7 +234,7 @@ export default function LandingPage() {
           <PhonePreview en={en} text={t} />
         </div>
         <div className="panorama-section" aria-label={en ? 'Medellín illustration' : 'Ilustración de Medellín'}>
-          <div className="panorama-frame"><div className="reference-scene-desktop"><ReferencePanorama en={en} /></div><div className="reference-scene-mobile"><AnimatedPanorama en={en} /></div><span className="panorama-caption">{t.panoramaNote}</span></div>
+          <div className="panorama-frame"><AnimatedPanorama en={en} /><span className="panorama-caption">{t.panoramaNote}</span></div>
         </div>
       </section>
 
@@ -257,22 +252,6 @@ export default function LandingPage() {
               <div className="perk-copy"><h3>{title}</h3><p>{body}</p></div>
             </article>)}
           </div>
-        </div>
-      </section>
-
-      <section id="comercios" className="brand-strip" aria-labelledby="brand-strip-title">
-        <div className="brand-strip-inner">
-          <h2 id="brand-strip-title">{t.brandsTitle}</h2>
-          <div className="brand-names" aria-label={en ? 'Illustrative brand names' : 'Nombres de marcas ilustrativos'}>
-            <span className="brand-wordmark brand-juan">Juan Valdez<span>CAFÉ DE COLOMBIA</span></span>
-            <span className="brand-wordmark"><span className="brand-exito">éxito</span></span>
-            <span className="brand-wordmark brand-crepes">Crepes<br />&amp; Waffles</span>
-            <span className="brand-wordmark brand-falabella">falabella.</span>
-            <span className="brand-wordmark brand-adidas"><svg viewBox="0 0 70 45" aria-label="adidas" role="img"><g fill="#171717"><path d="m12 23 7-4 8 14H17Zm15-9 7-4 14 23H36Zm15-9 7-4 19 32H56Z" /><text x="35" y="44" textAnchor="middle" fontFamily="Arial,sans-serif" fontWeight="bold" fontSize="16">adidas</text></g></svg></span>
-            <span className="brand-wordmark brand-cine"><svg viewBox="0 0 80 42" role="img" aria-label="Cine Colombia"><g fill="none" stroke="#16388b" strokeWidth="3"><circle cx="32" cy="16" r="13" /><circle cx="32" cy="16" r="8" /><path d="M42 7a13 13 0 1 1 0 18m2-14a8 8 0 1 1 0 10" /></g><text x="40" y="40" textAnchor="middle" fill="#16388b" fontSize="7" fontWeight="900" fontFamily="Arial,sans-serif">CINE COLOMBIA</text></svg></span>
-            <span className="brand-wordmark"><img src={`${import.meta.env.BASE_URL}images/reference-assets/rappi.png`} alt="Rappi" /></span>
-          </div>
-          <p className="brand-disclaimer"><strong>{en ? 'Illustrative only · no partnerships' : 'Solo ilustrativo · sin alianzas'}</strong>{t.brandsDisclaimer}</p>
         </div>
       </section>
 

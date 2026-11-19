@@ -1,0 +1,240 @@
+/* The public page follows the supplied compact, illustrated composition.
+   Authenticated administration keeps the shared application theme. */
+.tanda-page {
+  --tanda-ink: #252326;
+  --tanda-muted: #665b63;
+  --tanda-coral: #ff503c;
+  --tanda-paper: #fff8f5;
+  font-family: 'Nunito', sans-serif;
+  background: #fff8f5;
+}
+.tanda-header { height: 60px; border: 0; background: #fff8f5b8; }
+.tanda-header-inner { width: min(1100px, calc(100% - 190px)); }
+.tanda-nav { gap: clamp(24px, 3vw, 38px); }
+.tanda-nav a { font-size: 11px; }
+.tanda-button { font-family: 'Nunito', sans-serif; }
+.button-coral { color: #fff; box-shadow: 0 4px 10px #ff503c30; }
+.button-coral:hover { background: #ed402e; }
+.tanda-page .header-download { min-height: 30px; padding-inline: 16px; }
+.header-download svg { display: none; }
+.tanda-language { min-width: 31px; height: 27px; font-size: 9px; }
+
+.tanda-hero { position: relative; height: clamp(340px, 33vw, 420px); padding: 10px 0 0; background: radial-gradient(ellipse at 0 80%, #e9d3fa90, transparent 48%), radial-gradient(ellipse at 100% 50%, #ffd6e8, transparent 52%), linear-gradient(#fff4f8, #fff1eb); }
+.hero-inner {
+  position: relative; z-index: 2; grid-template-columns: minmax(350px, .94fr) minmax(390px, 1.06fr);
+  align-items: start; width: min(1100px, calc(100% - 170px)); min-height: 0; height: 100%; gap: 12px;
+}
+.tanda-page .hero-copy { padding: 0 0 0 2px; text-align: left; }
+.hero-copy .tanda-eyebrow, .hero-copy .hero-location { display: none; }
+.tanda-page .hero-copy h1 { font-family: 'Nunito', sans-serif; font-size: clamp(42px, 4.8vw, 60px); font-weight: 1000; line-height: .98; letter-spacing: -.055em; }
+.hero-copy h1 span::before { inset: .04em -.12em -.03em -.14em; border-radius: 999px; }
+.hero-copy h1::before {
+  position: absolute; top: 13px; left: -26px; width: 24px; height: 30px;
+  background: linear-gradient(55deg, transparent 45%, #ff503c 46% 51%, transparent 52%) 0 0/12px 24px no-repeat,
+    linear-gradient(75deg, transparent 45%, #ff503c 46% 51%, transparent 52%) 10px 0/12px 22px no-repeat;
+  content: '';
+}
+.tanda-page .hero-intro { position: relative; max-width: 350px; margin: 17px 0 12px; color: #353035; background: #fff4f8e8; box-shadow: 0 0 9px 6px #fff4f8e8; border-radius: 5px; font-size: 16px; font-weight: 500; line-height: 1.3; }
+.tanda-page .button-quiet { background: #fff8f5f5; }
+.hero-buttons { gap: 10px; }
+.hero-buttons .tanda-button { min-height: 34px; padding: 0 17px; font-size: 12px; }
+.phone-stage { min-height: 340px; transform: none; }
+.phone-stage::before { background: #f8dbeb; }
+.phone-orbit { display: none; }
+.phone { border-width: 5px; box-shadow: 5px 6px 0 #b9aab6, 0 12px 24px #3e273320; }
+.phone-front { left: 12%; width: 182px; height: 330px; transform: rotate(-4deg) translateY(1px); }
+.phone-back { right: 8%; width: 166px; height: 302px; transform: rotate(10deg) translateY(14px); }
+.phone-screen { background: linear-gradient(145deg, #fff8ee, #fce9f1 64%, #fbf5ef); }
+.phone-status { padding: 10px 11px 0; font-size: 6px; }
+.phone-speaker { width: 51px; height: 10px; top: 5px; }
+.phone-wordmark { margin: 10px 12px 9px; text-align: center; font-size: 17px; }
+.phone-front .phone-screen h3 { margin: 0 9px 2px; font-size: 11px; }
+.greeting-spark { margin-left: 3px; color: #eeb637; }
+.phone-subline { margin: 0 9px 7px; color: #40373e; font-size: 6px; }
+.phone-search { height: 21px; margin: 0 8px 7px; padding: 0 6px; gap: 4px; border-radius: 99px; font-size: 5px; }
+.app-categories { display: flex; justify-content: space-between; gap: 4px; margin: 0 9px 9px; }
+.app-categories > div { flex: 1; text-align: center; }
+.app-categories span { display: grid; height: 29px; place-items: center; border-radius: 9px; background: #ffd1d5; }
+.app-categories > div:nth-child(2) span { background: #e9d6f3; }
+.app-categories > div:nth-child(3) span { background: #ffe1b2; }
+.app-categories > div:nth-child(4) span { background: #f7f0ee; }
+.app-categories small { display: block; margin-top: 3px; font-size: 5px; font-weight: 800; }
+.phone-section-label { margin: 0 9px 6px; }
+.phone-section-label strong { font-size: 9px; }
+.phone-section-label > span { text-decoration: underline; }
+.phone-section-label strong span { color: #eaba2e; }
+.app-food-card { margin: 0 7px; overflow: hidden; border-radius: 10px; background: #fff; box-shadow: 0 2px 3px #392a3220; }
+.app-food-photo { position: relative; height: 77px; }
+.app-food-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 57%; }
+.app-food-photo > span { position: absolute; top: 6px; left: 5px; padding: 4px 6px; border-radius: 6px; background: #ffb4b6; font-size: 11px; font-weight: 1000; transform: rotate(-9deg); }
+.app-food-photo > svg { position: absolute; top: 7px; right: 6px; color: #f4513b; fill: #fff5f5; }
+.app-food-copy { padding: 6px; }
+.app-food-copy strong { display: block; font-size: 7px; font-weight: 1000; }
+.app-food-copy p { margin: 2px 0; font-size: 6px; line-height: 1.3; }
+.app-concept-note { margin: 6px 0 0; font-size: 5px; color: #776a72; text-align: center; }
+.phone-back-heading { display: flex; align-items: center; justify-content: space-between; height: 23px; padding: 0 10px; font-size: 20px; }
+.app-photo-card { margin: 0 7px 6px; overflow: hidden; background: #fff; border-radius: 6px; }
+.app-photo-card > img { display: block; width: 100%; height: 69px; object-fit: cover; object-position: center 60%; }
+.app-photo-card > div { position: relative; padding: 5px 5px 6px; min-height: 34px; }
+.app-photo-card strong { font-size: 7px; font-weight: 1000; }
+.app-photo-card p { max-width: 83px; margin: 2px 0 0; font-size: 5px; line-height: 1.2; }
+.app-discount { position: absolute; right: 3px; top: 6px; padding: 3px; border-radius: 4px; background: #ffc5d3; font-size: 6px; font-weight: 1000; }
+.phone-caption { display: none; }
+.sticker-offer {
+  width: 86px; height: 80px; padding: 13px; border: 0; border-radius: 0;
+  clip-path: none; background: transparent; box-shadow: none; font-size: 20px; line-height: .95; transform: rotate(-15deg);
+}
+.badge-shape { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sticker-offer > span { position: relative; }
+.sticker-offer-a { top: 29%; left: -11%; }
+.sticker-offer-b { top: 2%; right: -3%; background: transparent; transform: rotate(9deg); }
+.sticker-benefit { top: 0; left: -10%; padding: 12px 9px; border: 2px solid #272326; border-radius: 38% 28% 34% 23%; background: #fff0b7; font-size: 12px; line-height: 1.05; text-align: center; transform: rotate(-12deg); }
+.sticker-category { min-height: 32px; border: 2px solid #fff8f5; box-shadow: 0 3px 2px #8d6f8e30; font-size: 11px; }
+.sticker-category svg { color: #272326; }
+.sticker-food { top: 27%; right: -11%; transform: rotate(-5deg); }
+.sticker-fashion { top: 40%; right: -7%; transform: rotate(-4deg); }
+.sticker-coffee { top: 53%; right: -8%; transform: rotate(-5deg); }
+
+.panorama-section { position: absolute; z-index: 0; right: 0; bottom: -3px; left: 0; margin: 0; padding: 0; }
+.panorama-frame { width: min(1440px, 100%); padding: 0; }
+.panorama-frame .reference-panorama { width: 100%; max-width: none; margin: 0; }
+.panorama-frame .motion-panorama-svg { clip-path: none; mask-image: none; }
+.panorama-frame .panorama-motion-toggle { z-index: 4; right: 8px; bottom: 0; width: 29px; height: 29px; }
+.panorama-frame .panorama-motion-toggle span { width: 23px; height: 23px; }
+.panorama-caption { right: 40px; bottom: 1px; font-size: 6px; }
+
+.perks-section { position: relative; padding: 9px 0 0; }
+.perks-inner, .brand-strip-inner, .how-inner { width: min(1100px, calc(100% - 170px)); }
+.section-heading { margin-bottom: 12px; }
+.section-heading h2 { font-size: clamp(22px, 2.5vw, 29px); letter-spacing: -.045em; }
+.section-heading p { display: none; }
+.section-heading h2::before, .section-heading h2::after { display: inline-block; margin: 0 12px; color: var(--tanda-coral); font-weight: 600; content: '›'; }
+.section-heading h2::after { content: '‹'; }
+.perk-card { min-height: 86px; gap: 12px; padding: 10px 14px; border-radius: 18px; }
+.perk-0 { background: linear-gradient(120deg, #f0e7fa, #e7d0fa); }
+.perk-1 { background: linear-gradient(120deg, #ffecde, #ffdadc); }
+.perk-2 { background: linear-gradient(120deg, #fbe1e7, #fac8dc); }
+.perk-icon { flex: 0 0 65px; width: 65px; height: 65px; }
+.perk-icon svg { width: 65px; height: 65px; }
+.perk-copy { border: 0; padding-left: 2px; }
+.perk-copy h3 { font-size: 18px; }
+.perk-copy p { color: #353035; font-size: 10px; line-height: 1.25; font-weight: 600; }
+.brand-strip { padding: 4px 0 5px; }
+.brand-strip h2 { margin-bottom: 10px; font-size: clamp(20px, 2.2vw, 26px); letter-spacing: -.045em; }
+.brand-wordmark { min-height: 52px; padding: 7px 8px; }
+.brand-wordmark img { width: 100%; height: 38px; object-fit: contain; mix-blend-mode: multiply; }
+.brand-adidas svg { width: 59px; height: 39px; }
+.brand-juan { display: flex; flex-direction: column; justify-content: center; color: #a8223c; font: italic 700 18px Georgia, serif; letter-spacing: -.08em; }
+.brand-juan span { margin-top: 2px; font: 600 4px Arial, sans-serif; letter-spacing: .06em; }
+.brand-exito { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #ffe027; color: #151515; font: 900 19px 'Nunito', sans-serif; letter-spacing: -.1em; }
+.brand-crepes { color: #5d3823; font: italic 700 16px/.88 Georgia, serif; letter-spacing: -.07em; }
+.brand-falabella { color: #8eaf32; font: italic 700 23px Georgia, serif; letter-spacing: -.06em; }
+.brand-cine svg { width: 64px; height: 38px; }
+.brand-strip-inner > p { max-width: 900px; margin-top: 6px; font-size: 6.5px; }
+.brand-disclaimer strong { display: inline; padding: 0; margin-right: 5px; background: none; font-size: inherit; }
+.tanda-page .how-section { padding: 0 0 20px; background: radial-gradient(ellipse at 0 50%, #ead4fa, transparent 45%), #fff6f1; }
+.how-inner { grid-template-columns: 185px 1fr; gap: 15px; align-items: center; }
+.how-heading { align-self: start; padding-top: 5px; text-align: left; }
+.how-heading .tanda-eyebrow { display: none; }
+.how-heading h2 { position: relative; font-size: 24px; letter-spacing: -.045em; }
+.how-heading h2::after { position: absolute; bottom: -10px; left: 26px; width: 115px; height: 7px; border-top: 2px solid var(--tanda-coral); border-radius: 50%; content: ''; transform: rotate(-3deg); }
+.how-step { grid-template-columns: 37px minmax(0,1fr); gap: 8px; align-items: center; min-height: 64px; padding: 9px; border: 1px solid #fff9f7; border-radius: 17px; background: #ffffffa8; }
+.how-number { display: grid; place-items: center; height: 39px; padding: 0; border-radius: 11px; color: var(--tanda-coral); background: #ffd0ce; }
+.how-number svg { width: 24px; height: 24px; stroke-width: 1.6; }
+.how-icon-1 { color: #28232a; background: #e6cff4; }
+.how-icon-2 { background: #ffddbd; }
+.how-step h3 { font-size: 12px; }
+.how-step p { color: #40373e; font-size: 7px; line-height: 1.3; }
+.honesty-note { grid-column: 1 / -1; gap: 5px; font-size: 7px; }
+
+@media (min-width: 1200px) {
+  .phone-stage { min-height: 385px; }
+  .phone-front { width: 208px; height: 374px; }
+  .phone-back { width: 188px; height: 342px; }
+  .app-food-photo { height: 112px; }
+  .app-photo-card > img { height: 89px; }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .tanda-header-inner { width: calc(100% - 70px); }
+  .hero-inner { width: calc(100% - 80px); grid-template-columns: .95fr 1.05fr; gap: 0; }
+  .tanda-page .hero-copy h1 { font-size: 40px; }
+  .tanda-page .hero-intro { font-size: 14px; }
+  .hero-buttons .tanda-button { padding-inline: 11px; font-size: 10px; }
+  .phone-stage { transform: scale(.9); transform-origin: center top; }
+  .phone-front { left: 7%; }
+  .phone-back { right: 1%; }
+  .sticker-category { right: -7%; }
+  .sticker-benefit { left: -9%; }
+  .sticker-offer-a { left: -12%; }
+  .perks-inner, .brand-strip-inner, .how-inner { width: calc(100% - 80px); }
+  .perk-card { gap: 7px; padding: 9px; }
+  .perk-icon, .perk-icon svg { width: 50px; height: 50px; flex-basis: 50px; }
+  .perk-copy h3 { font-size: 16px; }
+  .perk-copy p { font-size: 9px; }
+  .how-inner { grid-template-columns: 150px 1fr; }
+  .how-steps { gap: 18px; }
+  .how-step { grid-template-columns: 29px 1fr; padding: 6px; gap: 5px; }
+  .how-number { height: 32px; }
+  .how-arrow { right: -20px; }
+}
+@media (max-width: 700px) {
+  .tanda-header { height: 58px; }
+  .tanda-header-inner { width: calc(100% - 36px); }
+  .tanda-language { min-width: 36px; height: 33px; font-size: 10px; }
+  .tanda-hero { height: auto; padding-top: 0; }
+  .hero-inner { width: calc(100% - 40px); height: auto; grid-template-columns: 1fr; }
+  .tanda-page .hero-copy { padding: 24px 0 0; text-align: center; }
+  .tanda-page .hero-copy h1 { font-size: clamp(36px, 10.8vw, 53px); }
+  .hero-copy h1::before { display: none; }
+  .tanda-page .hero-intro { max-width: 330px; margin: 16px auto; font-size: 14px; }
+  .hero-buttons .tanda-button { min-height: 39px; padding: 0 14px; font-size: 11px; }
+  .phone-stage { min-height: 350px; margin-top: 16px; transform: scale(.93); transform-origin: center top; }
+  .phone-front { left: 17%; width: 182px; height: 330px; }
+  .phone-back { right: 9%; width: 166px; height: 302px; }
+  .sticker-benefit { top: 1%; left: -1%; padding: 8px; font-size: 9px; }
+  .sticker-offer { width: 61px; height: 57px; padding: 9px; font-size: 15px; }
+  .sticker-offer-a { left: 0; top: 28%; }
+  .sticker-offer-b { right: 0; top: 2%; }
+  .sticker-category { min-height: 28px; padding: 0 8px; font-size: 9px; }
+  .sticker-food { top: 28%; right: -2%; }
+  .sticker-fashion { top: 40%; right: -2%; }
+  .sticker-coffee { top: 52%; right: -1%; }
+  .panorama-section { position: relative; margin-top: -45px; bottom: auto; padding: 0 5px; }
+  .panorama-frame { padding-bottom: 18px; }
+  .panorama-frame .reference-panorama { width: 100%; }
+  .panorama-frame .motion-panorama-svg { clip-path: none; mask-image: none; }
+  .panorama-right-piece { display: none; }
+  .panorama-caption { right: 37px; bottom: 0; left: 5px; font-size: 5px; }
+  .perks-inner, .brand-strip-inner, .how-inner { width: calc(100% - 38px); }
+  .perks-section { padding: 8px 0 18px; }
+  .section-heading h2 { font-size: 22px; line-height: 1.15; }
+  .section-heading h2::before, .section-heading h2::after { display: none; }
+  .perk-card { min-height: 83px; padding: 10px 18px; gap: 18px; }
+  .perk-icon, .perk-icon svg { flex-basis: 60px; width: 60px; height: 60px; }
+  .perk-copy h3 { font-size: 18px; }
+  .perk-copy p { font-size: 11px; line-height: 1.3; }
+  .brand-strip { padding: 8px 0 24px; }
+  .brand-strip h2 { font-size: 20px; }
+  .brand-wordmark { min-height: 51px; padding: 6px; }
+  .brand-wordmark img { height: 36px; }
+  .brand-strip-inner > p { margin-top: 10px; font-size: 7px; }
+  .brand-disclaimer strong { display: block; margin-bottom: 3px; }
+  .tanda-page .how-section { padding: 22px 0; }
+  .how-inner { grid-template-columns: 1fr; gap: 23px; }
+  .how-heading { text-align: center; }
+  .how-heading h2 { font-size: 27px; }
+  .how-heading h2::after { left: 50%; transform: translateX(-50%) rotate(-3deg); }
+  .how-step { grid-template-columns: 45px 1fr; min-height: 74px; padding: 11px; gap: 13px; }
+  .how-number { height: 45px; }
+  .how-step h3 { font-size: 15px; }
+  .how-step p { font-size: 10px; }
+  .honesty-note { font-size: 8px; }
+}
+@media (max-width: 380px) {
+  .tanda-page .hero-copy h1 { font-size: 37px; }
+  .hero-buttons { flex-direction: row; }
+  .hero-buttons .tanda-button { padding-inline: 10px; font-size: 10px; }
+  .phone-stage { min-height: 325px; transform: scale(.85); }
+  .phone-front { left: 14%; }
+  .phone-back { right: 4%; }
+}
