@@ -502,3 +502,46 @@
 @media (prefers-reduced-motion: reduce) {
   .tanda-page .phone, .tanda-page .perk-card, .tanda-page .tanda-button { transition: none !important; }
 }
+
+/* Compact desktop hero: keep the illustration inside the same visual canvas,
+   behind the copy and phone previews, rather than adding its height below. */
+@media (min-width: 760px) {
+  .tanda-page .tanda-hero {
+    position: relative;
+    height: clamp(560px, 43.75vw, 630px);
+    min-height: 0;
+    padding: 0;
+  }
+  .tanda-page .hero-inner {
+    align-items: center;
+    padding-top: 28px;
+  }
+  .tanda-page .phone-stage {
+    height: 330px;
+    min-height: 0;
+  }
+  .tanda-page .phone-front {
+    top: 36px;
+    width: 154px;
+    height: 280px;
+  }
+  .tanda-page .phone-back {
+    top: 51px;
+    width: 140px;
+    height: 255px;
+  }
+  .tanda-page .panorama-section {
+    position: absolute;
+    z-index: 1;
+    right: auto;
+    bottom: 0;
+    left: 50%;
+    width: min(1000px, calc(100% - 64px));
+    height: auto;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+  .tanda-page .panorama-frame {
+    width: 100%;
+  }
+}
