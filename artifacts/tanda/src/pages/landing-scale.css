@@ -536,12 +536,101 @@
     right: auto;
     bottom: 0;
     left: 50%;
-    width: min(1000px, calc(100% - 64px));
+    width: min(930px, calc(100% - 80px));
     height: auto;
     margin: 0;
     transform: translateX(-50%);
   }
   .tanda-page .panorama-frame {
     width: 100%;
+  }
+  .tanda-page .sticker-benefit {
+    top: -3px;
+    left: 0;
+    transform: rotate(-10deg) scale(.92);
+  }
+  .tanda-page .sticker-offer-a {
+    top: 60%;
+    left: 2%;
+    transform: rotate(-12deg) scale(.9);
+  }
+  .tanda-page .sticker-offer-b {
+    top: 0;
+    right: 2%;
+    transform: rotate(8deg) scale(.9);
+  }
+}
+
+.tanda-page .panorama-frame .panorama-motion-toggle {
+  top: auto;
+  right: 4px;
+  bottom: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: auto;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(40, 37, 41, .2);
+  border-radius: 999px;
+  color: #282529;
+  background: rgba(255, 248, 245, .96);
+  box-shadow: 0 2px 8px rgba(54, 41, 49, .12);
+}
+.tanda-page .panorama-frame .panorama-motion-toggle > span:first-child {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: auto;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.tanda-page .panorama-motion-toggle .panorama-motion-label {
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+.tanda-page .panorama-motion-toggle:focus-visible {
+  outline: 3px solid #f4513b;
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+.tanda-page .perks-section {
+  background: linear-gradient(180deg, rgba(235, 216, 239, .38), rgba(255, 248, 245, 0) 48px);
+}
+.tanda-page .perk-card {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  align-items: center;
+}
+.tanda-page .perk-icon { justify-self: center; }
+.tanda-page .perk-copy {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  min-height: 62px;
+  text-align: left;
+}
+.tanda-page .perk-copy h3 {
+  margin: 0;
+  line-height: 1.1;
+}
+.tanda-page .perk-copy p {
+  display: flex;
+  align-items: center;
+  min-height: 2.9em;
+  margin: 0;
+}
+@media (max-width: 759px) {
+  .tanda-page .panorama-frame { padding-bottom: 64px; }
+  .tanda-page .panorama-frame .panorama-motion-toggle {
+    right: auto;
+    left: 50%;
+    bottom: -39px;
+    transform: translateX(-50%);
   }
 }

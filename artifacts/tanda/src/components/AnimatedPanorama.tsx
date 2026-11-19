@@ -46,6 +46,14 @@ export default function AnimatedPanorama({ en }: { en: boolean }) {
       <defs>
         <clipPath id={`${prefix}-cabin-1`}><path d={cabinOne} /></clipPath>
         <clipPath id={`${prefix}-cabin-2`}><path d={cabinTwo} /></clipPath>
+        <linearGradient id={`${prefix}-coupon-sky-left`} x1="230" y1="52" x2="320" y2="128" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#e3ccf5" />
+          <stop offset="1" stopColor="#e8ccec" />
+        </linearGradient>
+        <linearGradient id={`${prefix}-coupon-sky-right`} x1="695" y1="94" x2="775" y2="158" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#fdd8be" />
+          <stop offset="1" stopColor="#f2c7cd" />
+        </linearGradient>
         <linearGradient id={`${prefix}-sky-1`} gradientUnits="userSpaceOnUse" x1="570" y1="105" x2="615" y2="165">
           <stop stopColor="#f9dcb1" /><stop offset="1" stopColor="#fbdfbd" />
         </linearGradient>
@@ -58,6 +66,15 @@ export default function AnimatedPanorama({ en }: { en: boolean }) {
       </defs>
 
       <image href={artwork} width="1024" height={height} />
+
+      {/* These two source-art coupons duplicate the offer stickers by the phones.
+          Their sky-only patches retain the original composition and landmarks. */}
+      <path d="M278 42 C298 44 318 54 327 69 C332 78 327 87 328 94 C329 110 319 122 302 126 C292 136 278 137 265 132 C251 136 235 130 229 119 C218 111 220 97 226 88 C218 78 220 67 228 60 C233 51 246 44 260 45Z"
+        fill={`url(#${prefix}-coupon-sky-left)`} />
+      <path d="M218 45 C226 46 232 51 234 57 L233 64 237 70 233 78 226 77 221 72 215 71 211 66 214 59 210 54Z"
+        fill={`url(#${prefix}-coupon-sky-left)`} />
+      <path d="m723 90 20 3 15 6 16 6 1 11 2 7-3 10 2 9-8 8-7 4-10 7-11-3-8 4-9-3-10-1-6-5-9-3-3-9-3-5 3-10-3-7 5-6 1-10 6-3 3-6 9-2Z"
+        fill={`url(#${prefix}-coupon-sky-right)`} />
 
       {/* Only the sky directly behind the original cabins is reconstructed.
           No masks or edits touch the students, vehicles or architecture. */}
@@ -91,6 +108,7 @@ export default function AnimatedPanorama({ en }: { en: boolean }) {
     <button className="panorama-motion-toggle" type="button" onClick={() => setPaused(value => !value)}
       aria-label={label} title={label} aria-pressed={paused} data-testid="button-panorama-motion">
       <span>{paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}</span>
+      <span className="panorama-motion-label">{label}</span>
     </button>
   </div>;
 }

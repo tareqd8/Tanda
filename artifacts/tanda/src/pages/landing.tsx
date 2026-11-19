@@ -28,7 +28,6 @@ const copy = {
     samplePerk: 'Ejemplo ilustrativo', sampleValue: '10% menos',
     bakery: 'Panadería local', bakeryType: 'Pan y café · Manila',
     mockDisclaimer: 'Vista conceptual · beneficios y comercios no activos',
-    panoramaNote: 'Descuentos de la ilustración: ejemplos gráficos, no ofertas activas.',
     benefitsTitle: 'Todo lo que necesitas para ahorrar más.',
     benefitsSub: 'Una idea sencilla, pensada para la vida que ya tienes.',
     cards: [
@@ -71,7 +70,6 @@ const copy = {
     samplePerk: 'Illustrative example', sampleValue: '10% off',
     bakery: 'Local bakery', bakeryType: 'Bread & coffee · Manila',
     mockDisclaimer: 'Concept preview · places and perks are not live',
-    panoramaNote: 'Discounts in the illustration are graphic examples, not live offers.',
     benefitsTitle: 'Everything you need to save more.',
     benefitsSub: 'A simple idea, made for the life you already have.',
     cards: [
@@ -234,7 +232,7 @@ export default function LandingPage() {
           <PhonePreview en={en} text={t} />
         </div>
         <div className="panorama-section" aria-label={en ? 'Medellín illustration' : 'Ilustración de Medellín'}>
-          <div className="panorama-frame"><AnimatedPanorama en={en} /><span className="panorama-caption">{t.panoramaNote}</span></div>
+          <div className="panorama-frame"><AnimatedPanorama en={en} /></div>
         </div>
       </section>
 
